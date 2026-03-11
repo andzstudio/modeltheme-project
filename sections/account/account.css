@@ -1,0 +1,926 @@
+/* === AUTHENTICATION OVERLAY STYLES === */
+
+/* --- Base Variables (prefixed for consistency) --- */
+:root {
+    --auth-primary: #687fb0;
+    --auth-primary-light: #8a9cc8;
+    --auth-white: #FFFFFF;
+    --auth-ghost-text: #EFEFEF;
+    --auth-dark: #222;
+    --auth-gray: #444;
+    --auth-light-gray: #DDD;
+    --auth-bg: #f6f5f7;
+    --auth-success: #687fb0;
+    --auth-error: #ff4b2b;
+    --auth-font: 'Poppins', sans-serif;
+}
+
+/* --- Overlay --- */
+.mt-auth-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.mt-auth-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* --- Main Container --- */
+.mt-auth-container {
+    background-color: var(--auth-bg);
+    border-radius: 20px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12), 0 20px 20px rgba(0,0,0,0.1);
+    position: relative;
+    /* overflow: hidden; */ /* Removed to allow password helper to be fully visible */
+    width: 900px;
+    max-width: 95%;
+    min-height: 580px; /* Increased height for password helper */
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+    transition: opacity 0.6s cubic-bezier(0.65, 0, 0.35, 1) 0.1s, transform 0.6s cubic-bezier(0.65, 0, 0.35, 1) 0.1s;
+}
+
+.mt-auth-overlay.active .mt-auth-container {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+
+/* --- Form Containers (Sign Up & Sign In) --- */
+.mt-auth-form-container {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    transition: all 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.mt-auth-sign-in-container {
+    left: 0;
+    width: 50%;
+    z-index: 2;
+    transition: all 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.mt-auth-container.right-panel-active .mt-auth-sign-in-container {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.mt-auth-sign-up-container {
+    left: 0;
+    width: 50%;
+    opacity: 0;
+    z-index: 1;
+}
+
+.mt-auth-container.right-panel-active .mt-auth-sign-up-container {
+    transform: translateX(100%);
+    opacity: 1;
+    z-index: 5;
+    animation: mt-auth-show 0.6s;
+}
+
+@keyframes auth-show {
+    0%, 49.99% {
+        opacity: 0;
+        z-index: 1;
+    }
+    50%, 100% {
+        opacity: 1;
+        z-index: 5;
+    }
+}
+
+@keyframes auth-content-show {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* --- Staggered Element Animation (Transition-based) --- */
+
+/* 1. Default hidden state and transition property for all form elements */
+.mt-auth-form-container form > *:not(.mt-auth-mobile-switcher) {
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.5s cubic-bezier(0.65, 0, 0.35, 1), transform 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* 2. Active state for elements inside visible forms */
+.mt-auth-container:not(.right-panel-active):not(.forgot-password-active) .mt-auth-sign-in-container form > *:not(.mt-auth-mobile-switcher),
+.mt-auth-container.right-panel-active .mt-auth-sign-up-container form > *:not(.mt-auth-mobile-switcher),
+.mt-auth-container.forgot-password-active .mt-auth-forgot-password-container form > *:not(.mt-auth-mobile-switcher) {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 3. Stagger delays, applied during the transition */
+
+/* Delays for initial load (Sign In) */
+.mt-auth-overlay.active .mt-auth-sign-in-container form > *:nth-child(1) { transition-delay: 0.3s; }
+.mt-auth-overlay.active .mt-auth-sign-in-container form > *:nth-child(2) { transition-delay: 0.4s; }
+.mt-auth-overlay.active .mt-auth-sign-in-container form > *:nth-child(3) { transition-delay: 0.5s; }
+.mt-auth-overlay.active .mt-auth-sign-in-container form > *:nth-child(4) { transition-delay: 0.6s; }
+.mt-auth-overlay.active .mt-auth-sign-in-container form > *:nth-child(5) { transition-delay: 0.7s; }
+.mt-auth-overlay.active .mt-auth-sign-in-container form > *:nth-child(6) { transition-delay: 0.8s; }
+.mt-auth-overlay.active .mt-auth-sign-in-container form > *:nth-child(7) { transition-delay: 0.9s; }
+
+/* Delays for Sign Up panel */
+.mt-auth-container.mt-panel-transition.right-panel-active .mt-auth-sign-up-container form > *:nth-child(1) { transition-delay: 0.3s; }
+.mt-auth-container.mt-panel-transition.right-panel-active .mt-auth-sign-up-container form > *:nth-child(2) { transition-delay: 0.4s; }
+.mt-auth-container.mt-panel-transition.right-panel-active .mt-auth-sign-up-container form > *:nth-child(3) { transition-delay: 0.5s; }
+.mt-auth-container.mt-panel-transition.right-panel-active .mt-auth-sign-up-container form > *:nth-child(4) { transition-delay: 0.6s; }
+.mt-auth-container.mt-panel-transition.right-panel-active .mt-auth-sign-up-container form > *:nth-child(5) { transition-delay: 0.7s; }
+.mt-auth-container.mt-panel-transition.right-panel-active .mt-auth-sign-up-container form > *:nth-child(6) { transition-delay: 0.8s; }
+
+/* Delays for returning to Sign In panel */
+.mt-auth-container.mt-panel-transition:not(.right-panel-active):not(.forgot-password-active) .mt-auth-sign-in-container form > *:nth-child(1) { transition-delay: 0.3s; }
+.mt-auth-container.mt-panel-transition:not(.right-panel-active):not(.forgot-password-active) .mt-auth-sign-in-container form > *:nth-child(2) { transition-delay: 0.4s; }
+.mt-auth-container.mt-panel-transition:not(.right-panel-active):not(.forgot-password-active) .mt-auth-sign-in-container form > *:nth-child(3) { transition-delay: 0.5s; }
+.mt-auth-container.mt-panel-transition:not(.right-panel-active):not(.forgot-password-active) .mt-auth-sign-in-container form > *:nth-child(4) { transition-delay: 0.6s; }
+.mt-auth-container.mt-panel-transition:not(.right-panel-active):not(.forgot-password-active) .mt-auth-sign-in-container form > *:nth-child(5) { transition-delay: 0.7s; }
+.mt-auth-container.mt-panel-transition:not(.right-panel-active):not(.forgot-password-active) .mt-auth-sign-in-container form > *:nth-child(6) { transition-delay: 0.8s; }
+.mt-auth-container.mt-panel-transition:not(.right-panel-active):not(.forgot-password-active) .mt-auth-sign-in-container form > *:nth-child(7) { transition-delay: 0.9s; }
+
+/* Delays for Forgot Password panel */
+.mt-auth-container.mt-panel-transition.forgot-password-active .mt-auth-forgot-password-container form > *:nth-child(1) { transition-delay: 0.3s; }
+.mt-auth-container.mt-panel-transition.forgot-password-active .mt-auth-forgot-password-container form > *:nth-child(2) { transition-delay: 0.4s; }
+.mt-auth-container.mt-panel-transition.forgot-password-active .mt-auth-forgot-password-container form > *:nth-child(3) { transition-delay: 0.5s; }
+.mt-auth-container.mt-panel-transition.forgot-password-active .mt-auth-forgot-password-container form > *:nth-child(4) { transition-delay: 0.6s; }
+.mt-auth-container.mt-panel-transition.forgot-password-active .mt-auth-forgot-password-container form > *:nth-child(5) { transition-delay: 0.7s; }
+
+/* --- Forgot Password Flow --- */
+.mt-auth-forgot-password-container {
+    left: 0;
+    width: 50%;
+    z-index: 2;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px) scale(0.98);
+    transition: all 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.mt-auth-container.forgot-password-active .mt-auth-sign-in-container {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px) scale(0.98);
+}
+
+.mt-auth-container.forgot-password-active .mt-auth-forgot-password-container {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+}
+
+.mt-auth-container.forgot-password-active .mt-auth-overlay-container {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+
+/* --- Form Styling --- */
+.mt-auth-form-container form {
+    /* background-color: var(--auth-bg); */ /* Removed to allow parent border-radius to show */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 50px;
+    height: 100%;
+    text-align: center;
+}
+
+.mt-auth-form-container h1 {
+    font-weight: 700;
+    margin: 0 0 -1rem;
+    color: var(--auth-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.mt-auth-h1-logo {
+    height: 130px;
+    width: auto;
+    transform: translateY(5px);
+}
+
+.mt-auth-social-container {
+    margin: 10px 0;
+}
+
+.mt-auth-social {
+    border: 1px solid #DDDDDD;
+    border-radius: 10px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 44px;
+    width: 100%;
+    min-width: 260px;
+    text-decoration: none;
+    color: #555;
+    font-size: 14px;
+    font-weight: 500;
+    gap: 10px;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+}
+
+.mt-auth-social:hover {
+    background-color: #f9f9f9;
+    border-color: #ccc;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+}
+
+.mt-auth-google-logo {
+    width: 20px;
+    height: auto;
+    width: 60px;
+}
+
+.mt-auth-separator {
+    color: #aaa;
+    font-size: 12px;
+    margin: 20px 0;
+    font-weight: 500;
+}
+
+.mt-auth-input-group {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 12px;
+    position: relative;
+}
+
+.mt-auth-password-wrapper.focused {
+    /* Elevate the stacking context to ensure the helper appears above subsequent elements */
+    z-index: 200;
+}
+.mt-auth-input-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--auth-gray);
+    margin-bottom: 6px;
+    display: block;
+}
+
+.mt-auth-input-group input {
+    background-color: #eee;
+    border: none;
+    padding: 12px 15px;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+/* Add padding to password inputs to make space for the toggle icon */
+.mt-auth-input-group input[type="password"],
+.mt-auth-input-group input[type="text"][id*="assword"] /* Apply to text inputs that are passwords */ {
+    padding-right: 45px;
+}
+
+.mt-auth-input-group input:focus {
+    border-color: var(--auth-primary-light);
+    background-color: var(--auth-white);
+    box-shadow: 0 0 0 3px rgba(104, 127, 176, 0.2);
+}
+
+.mt-auth-forgot-password {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--auth-gray);
+    font-size: 13px;
+    text-decoration: none;
+    margin: 15px 0;
+    font-weight: 500;
+}
+
+.mt-auth-forgot-password:hover {
+    text-decoration: underline;
+}
+
+.mt-auth-back-to-login {
+    margin-top: 25px;
+    color: var(--auth-gray);
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* --- Back Button --- */
+.mt-auth-back-button {
+    position: absolute;
+    top: 20px;
+    left: 25px;
+    background: none;
+    border: none;
+    color: var(--auth-gray);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.mt-auth-back-button:hover {
+    opacity: 1;
+    color: var(--auth-primary);
+}
+
+/* --- Password Toggle Icon --- */
+.mt-auth-password-toggle {
+    position: absolute;
+    right: 15px;
+    /* Positioned relative to the input field below the label */
+    top: 42px; 
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--auth-gray);
+    opacity: 0.5;
+    transition: opacity 0.2s;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mt-auth-password-toggle:hover {
+    opacity: 1;
+}
+
+.mt-auth-password-toggle .mt-icon-eye-off {
+    display: none;
+}
+.mt-auth-password-toggle.active .mt-icon-eye {
+    display: none;
+}
+.mt-auth-password-toggle.active .mt-icon-eye-off {
+    display: block;
+}
+
+/* --- Buttons --- */
+.mt-auth-btn {
+    border-radius: 50px;
+    border: 1px solid var(--auth-primary);
+    background-color: var(--auth-primary);
+    color: var(--auth-white);
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in, box-shadow 0.3s ease, background-color 0.3s ease;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.mt-auth-btn:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 25px -5px rgba(104, 127, 176, 0.4);
+}
+
+.mt-auth-btn:active {
+    transform: scale(0.98);
+}
+
+.mt-auth-btn.ghost {
+    background-color: transparent;
+    border-color: var(--auth-ghost-text);
+    color: var(--auth-ghost-text);
+}
+
+.mt-auth-btn.ghost:hover {
+    background-color: rgba(255,255,255,0.1);
+    box-shadow: none;
+}
+
+/* --- Trust Badge --- */
+.mt-auth-trust-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    padding: 8px 12px;
+    background-color: rgba(0,0,0,0.03);
+    border-radius: 50px;
+    font-size: 11px;
+    color: var(--auth-gray);
+    font-weight: 500;
+    position: absolute;
+    bottom: 30px;
+}
+.mt-auth-trust-badge ion-icon {
+    color: var(--auth-success);
+}
+.mt-auth-trust-badge #mt-auth-community-count {
+    font-weight: 700;
+    color: var(--auth-dark);
+    display: inline-block;
+    transition: transform 0.2s ease-out;
+}
+
+.mt-auth-overlay-panel .mt-auth-trust-badge {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: var(--auth-ghost-text);
+    margin-top: 30px;
+}
+.mt-auth-overlay-panel .mt-auth-trust-badge ion-icon {
+    color: #fff;
+    opacity: 0.9;
+}
+.mt-auth-overlay-panel .mt-auth-trust-badge #mt-auth-community-count {
+    color: #fff;
+}
+
+/* --- Animated Overlay Panels --- */
+.mt-auth-overlay-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    transition: transform 0.7s cubic-bezier(0.76, 0, 0.24, 1);
+    /* New: Add padding to create inset effect */
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.mt-auth-container.right-panel-active .mt-auth-overlay-container {
+    transform: translateX(-100%);
+}
+
+@keyframes auth-gradient-animation {
+    0% { background-position: 0% 0%; }
+    25% { background-position: 100% 50%; }
+    50% { background-position: 50% 100%; }
+    75% { background-position: 0% 50%; }
+    100% { background-position: 0% 0%; }
+}
+
+.mt-auth-overlay-panels {
+    /* New: Live, non-linear gradient */
+    background-color: #000;
+    background-image:
+        radial-gradient(circle at 20% 20%, hsla(222, 47%, 35%, 0.7) 0%, transparent 35%),
+        radial-gradient(circle at 80% 70%, hsla(217, 56%, 45%, 0.8) 0%, transparent 30%),
+        radial-gradient(circle at 50% 50%, hsla(220, 50%, 25%, 0.6) 0%, transparent 40%);
+    background-size: 400% 400%;
+    animation: auth-gradient-animation 25s ease-in-out infinite;
+    background-position: 0 0;
+    color: var(--auth-white);
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: transform 0.7s cubic-bezier(0.76, 0, 0.24, 1);
+    /* New: Rounded corners for the inset panel */
+    border-radius: 15px;
+}
+.mt-auth-container.right-panel-active .mt-auth-overlay-panels {
+    transform: translateX(50%);
+}
+
+.mt-auth-overlay-panel {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    text-align: center;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    /* transform and transition removed to use a more stable content-based animation */
+}
+
+.mt-auth-overlay-panel h1,
+.mt-auth-overlay-panel p,
+.mt-auth-overlay-panel .mt-auth-btn {
+    transform: translateY(0);
+    opacity: 1;
+    transition: opacity 0.4s ease-in-out 0.25s, transform 0.6s cubic-bezier(0.65, 0, 0.35, 1) 0.25s;
+}
+.mt-auth-overlay-panel h1 {
+    color: var(--auth-white);
+    margin: 0;
+}
+
+.mt-auth-overlay-panel p {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+    margin: 20px 0 30px;
+    color: var(--auth-ghost-text);
+}
+
+/* New content animation for overlay panels */
+.mt-auth-container:not(.right-panel-active) .mt-auth-overlay-left h1,
+.mt-auth-container:not(.right-panel-active) .mt-auth-overlay-left p,
+.mt-auth-container:not(.right-panel-active) .mt-auth-overlay-left .mt-auth-btn,
+.mt-auth-container.right-panel-active .mt-auth-overlay-right h1,
+.mt-auth-container.right-panel-active .mt-auth-overlay-right p,
+.mt-auth-container.right-panel-active .mt-auth-overlay-right .mt-auth-btn {
+    opacity: 0;
+    transform: translateY(30px);
+    transition-delay: 0s;
+}
+
+.mt-auth-overlay-left {
+    /* This panel is on the left side of the 200% wide container */
+    left: 0;
+}
+
+.mt-auth-overlay-right {
+    right: 0;
+    /* This panel is on the right side of the 200% wide container */
+}
+
+/* --- Password Helper --- */
+.mt-auth-password-helper {
+    position: absolute;
+    top: 105%;
+    left: 0;
+    width: 100%;
+    background: var(--auth-white);
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    z-index: 110; /* Increased z-index */
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.mt-auth-password-wrapper.focused .mt-auth-password-helper {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.mt-auth-password-helper h4 {
+    font-size: 13px;
+    font-weight: 600;
+    margin: 0 0 10px;
+    color: var(--auth-dark);
+}
+
+.auth-rules-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.mt-auth-rule {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    color: var(--auth-gray);
+    transition: color 0.3s ease;
+}
+
+.mt-auth-rule.valid {
+    color: var(--auth-light-gray);
+}
+
+.mt-auth-rule-icon {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1.5px solid var(--auth-light-gray);
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.mt-auth-rule.valid .mt-auth-rule-icon {
+    background-color: var(--auth-success);
+    border-color: var(--auth-success);
+}
+
+.mt-auth-rule-icon svg {
+    width: 10px;
+    height: 10px;
+    color: var(--auth-white);
+    stroke-width: 3;
+    transform: scale(0);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.mt-auth-rule.valid .mt-auth-rule-icon svg {
+    transform: scale(1);
+}
+
+.mt-auth-rule-text {
+    position: relative;
+    overflow: hidden;
+}
+
+.mt-auth-rule-text::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1.5px;
+    background: var(--auth-gray);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.mt-auth-rule.valid .mt-auth-rule-text::after {
+    transform: scaleX(1);
+}
+
+.mt-auth-mobile-switcher {
+    display: none;
+}
+
+/* --- Forgot Password Decorative Panel --- */
+.mt-auth-forgot-password-deco-panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    z-index: 6;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-20px);
+    transition: all 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+    /* New: Add padding for inset effect */
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.mt-auth-deco-panel-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 40px;
+    background-color: #000;
+    background-image:
+        radial-gradient(circle at 20% 20%, hsla(222, 47%, 35%, 0.7) 0%, transparent 35%),
+        radial-gradient(circle at 80% 70%, hsla(217, 56%, 45%, 0.8) 0%, transparent 30%),
+        radial-gradient(circle at 50% 50%, hsla(220, 50%, 25%, 0.6) 0%, transparent 40%);
+    background-size: 400% 400%;
+    animation: auth-gradient-animation 25s ease-in-out infinite;
+    color: var(--auth-white);
+}
+
+.mt-auth-container.forgot-password-active .mt-auth-forgot-password-deco-panel {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.mt-auth-deco-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    animation: auth-content-show 0.6s forwards 0.3s;
+}
+.mt-auth-deco-icon {
+    font-size: 48px;
+    color: var(--auth-ghost-text);
+    text-shadow: 0 0 20px rgba(239, 239, 239, 0.3);
+    animation: pulseGlow 3s infinite ease-in-out;
+}
+
+.auth-deco-content h2 {
+    font-size: 2rem; color: var(--auth-white);
+}
+.auth-deco-content p {
+    font-size: 14px; font-weight: 400; line-height: 1.5;
+    color: var(--auth-ghost-text); max-width: 300px;
+}
+
+.mt-auth-mobile-switcher {
+    display: none;
+}
+
+/* --- New, Smoother Closing Animation --- */
+.mt-auth-overlay.auth-closing {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.mt-auth-overlay.auth-closing .mt-auth-container {
+    /* Reverse of the entry animation for a natural feel */
+    transform: scale(0.95) translateY(20px);
+    opacity: 0;
+    transition: opacity 0.5s cubic-bezier(0.65, 0, 0.35, 1), transform 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* --- Minimalist Notification V3 --- */
+#mt-auth-notification-container {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10001;
+    pointer-events: none;
+}
+
+.mt-ios-notification {
+    background: rgba(25, 25, 25, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: #e9e9e9;
+    padding: 12px 20px;
+    border-radius: 50px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    transform: translateY(20px) scale(0.95);
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    min-width: 300px;
+}
+
+.mt-notif-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+}
+
+.mt-notif-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.mt-notif-title {
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.mt-notif-msg {
+    font-size: 12px;
+    color: #c5c5c5;
+}
+
+.mt-notif-check, .mt-notif-error-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: white;
+    margin-left: auto;
+}
+
+.mt-notif-check { background-color: var(--auth-success); }
+.mt-notif-error-icon { background-color: var(--auth-error); }
+
+
+/* --- Responsive Design --- */
+@media (max-width: 992px) {
+    .mt-auth-container {
+        width: 90vw;
+        min-height: 90vh;
+        max-height: 600px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .mt-auth-form-container {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+    }
+    
+    .mt-auth-sign-in-container {
+        top: 0;
+        left: 0;
+        /* Removed transform to make it visible by default on mobile */
+        opacity: 1;
+    }
+
+    .mt-auth-sign-up-container {
+        top: 0;
+        left: 0;
+        opacity: 1;
+        transform: translateY(100%); /* Hide below by default */
+    }
+
+    .mt-auth-container.right-panel-active .mt-auth-sign-in-container {
+        transform: translateY(-100%); /* Slide up and out */
+    }
+
+    .mt-auth-container.right-panel-active .mt-auth-sign-up-container {
+        transform: translateY(0); /* Slide up into view */
+    }
+
+    .mt-auth-forgot-password-container {
+        width: 100%;
+        transform: translateY(100%);
+    }
+
+    .mt-auth-container.forgot-password-active .mt-auth-forgot-password-container {
+        transform: translateY(0);
+    }
+
+
+    .mt-auth-overlay-container {
+        display: none;
+    }
+
+    .mt-auth-forgot-password-deco-panel {
+        display: none;
+    }
+
+    .mt-auth-form-container form {
+        padding: 0 30px;
+        height: 100%;
+        justify-content: center;
+    }
+
+    .mt-auth-form-container h1 {
+        font-size: 1.5rem;
+    }
+    
+    .mt-auth-mobile-switcher {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 15px;
+        font-size: 14px;
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+    }
+    .mt-auth-mobile-switcher p { margin: 0 10px 0 0; color: var(--auth-gray); }
+    .mt-auth-mobile-switcher button {
+        font-weight: bold;
+        color: var(--auth-primary);
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .mt-auth-form-container form {
+        padding-bottom: 60px; /* Space for mobile switcher */
+    }
+}
+
+@media (max-width: 480px) {
+    .mt-auth-form-container form {
+        padding: 0 20px 60px;
+    }
+    .mt-auth-form-container h1 {
+        font-size: 1.3rem;
+    }
+    .mt-auth-social {
+        min-width: 220px;
+    }
+}
