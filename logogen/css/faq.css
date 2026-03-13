@@ -1,0 +1,206 @@
+/*
+  ============================================
+  ==  FAQ SECTION STYLES
+  ============================================
+  Adapted from user-provided template for seamless integration.
+*/
+
+.lg-faq-section {
+    --color-bg: #000000;
+    --color-text: #FFFFFF;
+    --color-neon: #C0FF00;
+    --color-border: rgba(255, 255, 255, 0.08);
+    --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lg-faq-section ::-webkit-scrollbar { width: 6px; }
+.lg-faq-section ::-webkit-scrollbar-track { background: var(--color-bg); }
+.lg-faq-section ::-webkit-scrollbar-thumb { background: #222; border-radius: 6px; }
+.lg-faq-section ::-webkit-scrollbar-thumb:hover { background: var(--color-neon); }
+
+/* ==========================================
+   TYPOGRAPHY & UTILITIES
+========================================== */
+.lg-faq-text-outline {
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255,255,255,0.3);
+    transition: var(--transition-smooth);
+}
+
+.lg-faq-text-neon-glow {
+    color: var(--color-neon);
+    text-shadow: 0 0 20px rgba(192, 255, 0, 0.3);
+}
+
+.lg-faq-util-hidden { display: none !important; }
+
+/* ==========================================
+   COMPONENTS
+========================================== */
+
+/* Search Input */
+.lg-faq-search-wrap {
+    position: relative;
+    z-index: 10;
+}
+
+.lg-faq-search-input {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--color-border);
+    backdrop-filter: blur(10px);
+    transition: var(--transition-smooth);
+}
+
+.lg-faq-search-input:focus {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(192, 255, 0, 0.6);
+    box-shadow: 0 0 30px rgba(192, 255, 0, 0.1);
+    outline: none;
+}
+
+/* Sidebar Navigation */
+.lg-faq-nav-button {
+    position: relative;
+    color: #777;
+    transition: var(--transition-smooth);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.lg-faq-nav-button::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; width: 100%; height: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    transform: translateX(-100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 0;
+}
+
+.lg-faq-nav-button:hover { color: var(--color-text); }
+.lg-faq-nav-button:hover::before { transform: translateX(0); }
+
+.lg-faq-nav-button.is-active {
+    color: var(--color-bg);
+    background: var(--color-neon);
+    font-weight: 600;
+    box-shadow: 0 4px 20px -5px rgba(192, 255, 0, 0.4);
+}
+
+.lg-faq-nav-button .lg-faq-icon-wrap {
+    position: relative;
+    z-index: 1;
+    transition: transform 0.3s ease;
+}
+
+.lg-faq-nav-button:hover:not(.is-active) .lg-faq-icon-wrap { transform: translateX(4px); }
+.lg-faq-nav-button.is-active .lg-faq-icon-wrap ion-icon { color: var(--color-bg); }
+.lg-faq-nav-button span { position: relative; z-index: 1; }
+
+/* FAQ Accordion Item */
+.lg-faq-card {
+    border-bottom: 1px solid var(--color-border);
+    transition: var(--transition-smooth);
+    will-change: border-color;
+}
+
+.lg-faq-card:hover { border-bottom-color: rgba(192, 255, 0, 0.3); }
+.lg-faq-card.is-expanded { border-bottom-color: var(--color-neon); }
+
+.lg-faq-card .lg-faq-header { transition: color 0.3s ease; }
+.lg-faq-card:hover .lg-faq-header { color: var(--color-text); }
+.lg-faq-card.is-expanded .lg-faq-header h3 { color: var(--color-neon); }
+
+/* Grid transition for smooth height animation */
+.lg-faq-content-grid {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lg-faq-card.is-expanded .lg-faq-content-grid { grid-template-rows: 1fr; }
+
+.lg-faq-content-inner {
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.4s ease;
+}
+
+.lg-faq-card.is-expanded .lg-faq-content-inner {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.5s ease 0.2s, transform 0.5s ease 0.1s;
+}
+
+/* Animated Plus/Minus Icon */
+.lg-faq-toggle-icon span { transition: var(--transition-smooth); background-color: #666; }
+.lg-faq-card:hover .lg-faq-toggle-icon span { background-color: var(--color-text); }
+.lg-faq-card.is-expanded .lg-faq-toggle-icon span:first-child { transform: rotate(180deg); background-color: var(--color-neon); }
+.lg-faq-card.is-expanded .lg-faq-toggle-icon span:last-child { transform: rotate(90deg) scale(0); background-color: var(--color-neon); }
+
+/* Timeline / Feature Steps */
+.lg-faq-step {
+    position: relative;
+    padding-left: 1.75rem;
+    padding-bottom: 1.5rem;
+    border-left: 1px solid var(--color-border);
+}
+
+.lg-faq-step:last-child { border-left-color: transparent; padding-bottom: 0; }
+
+.lg-faq-step::before {
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: 5px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #333;
+    box-shadow: 0 0 0 4px var(--color-bg);
+    transition: var(--transition-smooth);
+}
+
+.lg-faq-card.is-expanded .lg-faq-step.step-neon::before {
+    background: var(--color-neon);
+    box-shadow: 0 0 0 4px var(--color-bg), 0 0 12px rgba(192, 255, 0, 0.6);
+}
+
+.lg-faq-card.is-expanded .lg-faq-step.step-blue::before {
+    background: #3B82F6;
+    box-shadow: 0 0 0 4px var(--color-bg), 0 0 12px rgba(59, 130, 246, 0.6);
+}
+
+.lg-faq-card.is-expanded .lg-faq-step.step-purple::before {
+    background: #8B5CF6;
+    box-shadow: 0 0 0 4px var(--color-bg), 0 0 12px rgba(139, 92, 246, 0.6);
+}
+
+.lg-faq-card.is-expanded .lg-faq-step.step-emerald::before {
+    background: #10B981;
+    box-shadow: 0 0 0 4px var(--color-bg), 0 0 12px rgba(16, 185, 129, 0.6);
+}
+
+/* Feature Badges */
+.lg-faq-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--color-border);
+}
+
+/* Entrance Animations */
+@keyframes lg-faq-fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.lg-faq-anim-stagger { opacity: 0; animation: lg-faq-fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }

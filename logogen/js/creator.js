@@ -1024,8 +1024,8 @@ $(document).ready(function() {
                 <span class="lg-card-label">${style.name}</span>
                 <div class="lg-style-card__image-preview">
                     <img src="${imagePath}1.png" alt="${style.name} example 1" loading="lazy">
-                    <img src="${imagePath}2.png" alt="${style.name} example 2" loading="lazy">
-                    <img src="${imagePath}3.png" alt="${style.name} example 3" loading="lazy">
+                    <img src="${imagePath}2.png" alt="${style.name} example 2" loading="lazy" ${style.name === 'Modern' ? 'class="inverted-image"' : ''}>
+                    <img src="${imagePath}3.png" alt="${style.name} example 3" loading="lazy" ${style.name === 'Hand-Drawn' ? 'class="inverted-image"' : ''}>
                 </div>
             </div>
         `}).join('');
@@ -1041,6 +1041,7 @@ $(document).ready(function() {
                     <div class="lg-step-actions">
                         <button class="lg-button lg-button--primary" id="style-continue" disabled><span class="lg-button__text">Continue</span><span class="lg-button__loader"></span></button>
                     </div>
+                    <p class="lg-step-info-text">Note: The logos shown are for informational purposes only.</p>
                 </div>
             </div>
         `;

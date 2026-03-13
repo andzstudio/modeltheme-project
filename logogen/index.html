@@ -11,13 +11,41 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;900&family=Playfair+Display:wght@700&family=Arvo:wght@700&family=Dancing+Script:wght@700&family=Pacifico&family=Orbitron:wght@700&family=Lobster&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
+    <!-- Tailwind CSS (for FAQ Section) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        black: '#000000',
+                        white: '#FFFFFF',
+                        neon: '#C0FF00',
+                        gray: {
+                            700: '#333333',
+                            800: '#141414',
+                            850: '#0f0f0f',
+                            900: '#050505'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        poppins: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
     <!-- Stylesheets -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/quality.css">
     <link rel="stylesheet" href="css/creator.css">
     <link rel="stylesheet" href="css/gallery.css">
+    <link rel="stylesheet" href="css/pricing.css">
     <link rel="stylesheet" href="css/reviews.css">
+    <link rel="stylesheet" href="css/faq.css">
 </head>
 <body>
     <svg style="width:0;height:0;position:absolute;" aria-hidden="true" focusable="false">
@@ -42,13 +70,13 @@
     <header class="lg-navbar" id="lg-navbar">
         <div class="lg-container">
             <nav class="lg-navbar__nav">
-                <a href="#" class="lg-navbar__brand">
+                <a href="#lg-creator-intro" class="lg-navbar__brand">
                     <img src="img/logo/logo-official-white.svg" alt="LogoGen Logo" class="lg-navbar__brand-icon">
                 </a>
                 <div class="lg-navbar__menu" id="lg-navbar-menu">
                     <div class="lg-navbar__center">
                         <ul class="lg-navbar__links">
-                            <li><a href="#" class="lg-navbar__link active" data-target="#">
+                            <li><a href="#lg-creator-intro" class="lg-navbar__link active" data-target="#lg-creator-intro">
                                 <span class="lg-navbar__link-text">Home</span>
                                 <ion-icon name="home-outline" class="lg-navbar__link-icon"></ion-icon>
                             </a></li>
@@ -63,6 +91,14 @@
                             <li><a href="#about" class="lg-navbar__link" data-target="#about">
                                 <span class="lg-navbar__link-text">About</span>
                                 <ion-icon name="information-circle-outline" class="lg-navbar__link-icon"></ion-icon>
+                            </a></li>
+                            <li><a href="#pricing" class="lg-navbar__link" data-target="#pricing">
+                                <span class="lg-navbar__link-text">Pricing</span>
+                                <ion-icon name="card-outline" class="lg-navbar__link-icon"></ion-icon>
+                            </a></li>
+                            <li><a href="#faq" class="lg-navbar__link" data-target="#faq">
+                                <span class="lg-navbar__link-text">FAQ</span>
+                                <ion-icon name="help-circle-outline" class="lg-navbar__link-icon"></ion-icon>
                             </a></li>
                         </ul>
                     </div>
@@ -234,7 +270,7 @@
                     </div>
 
                     <div class="lg-gallery__item" style="height: 45vh;">
-                        <img src="" alt="3D">
+                        <img src="img/creations/crimson.png" alt="3D">
                         <div class="lg-gallery__item-content">
                             <p class="lg-gallery__item-prompt">3D abstract waves, gradient of pink and blue, smooth, satisfying loop, digital art.</p>
                             <div class="lg-gallery__item-actions">
@@ -425,6 +461,464 @@
             </div>
         </section>
         
+        <!-- ============================================ -->
+        <!-- == SECTION: PRICING                       == -->
+        <!-- ============================================ -->
+        <section class="lg-pricing" id="pricing">
+            <!-- Ambient Aurora Background -->
+            <div class="lg-pricing__mesh-bg">
+                <div class="lg-pricing__aurora lg-pricing__aurora--1"></div>
+                <div class="lg-pricing__aurora lg-pricing__aurora--2"></div>
+            </div>
+
+            <!-- Static Background Giant Text -->
+            <div class="lg-pricing__bg-text">Pricing</div>
+
+            <div class="lg-container">
+
+                <!-- Yearly Toggle -->
+                <div class="lg-pricing__toggle lg-pricing-reveal" style="transition-delay: 100ms;">
+                    <span class="lg-pricing__toggle-label is-active" id="lg-pricing-label-monthly">Monthly</span>
+                    
+                    <label class="lg-pricing__switch">
+                        <input type="checkbox" id="lg-pricing-billing-toggle">
+                        <span class="lg-pricing__slider"></span>
+                    </label>
+                    
+                    <span class="lg-pricing__toggle-label" id="lg-pricing-label-annually">
+                        Annual <span class="lg-pricing__badge">Save 20%</span>
+                    </span>
+                </div>
+
+                <!-- Main Pricing Section -->
+                <div class="lg-pricing__grid">
+                    
+                    <!-- Card 1: Starter -->
+                    <article class="lg-pricing-card lg-pricing-reveal" style="transition-delay: 200ms;">                
+                        <h2 class="lg-pricing-card__tier">Starter</h2>
+                        <p class="lg-pricing-card__desc">For freelancers and side projects.</p>
+                        
+                        <div class="lg-pricing-card__price-wrapper">
+                            <span class="lg-pricing-card__price-currency">$</span> 
+                            <span class="lg-pricing-card__price" data-monthly="9" data-yearly="7">9</span>
+                            <span class="lg-pricing-card__price-period">/mo</span>
+                        </div>
+                        <div class="lg-pricing-card__price-billing">billed monthly, cancel anytime</div>
+                        
+                        <div class="lg-pricing-card__credits">
+                            <i class="ph-fill ph-lightning"></i> 50 credits/month
+                        </div>
+                        <div class="lg-pricing-card__price-per-logo" data-monthly-cost="≈ $0.18 per logo" data-yearly-cost="≈ $0.14 per logo">≈ $0.18 per logo</div>
+
+                        <div class="lg-pricing-card__divider"></div>
+
+                        <div class="lg-pricing-card__features-wrapper">
+                            <div class="lg-pricing-card__feature-title">What's included</div>
+                            <ul class="lg-pricing-card__feature-list">
+                                <li class="lg-pricing-card__feature-item"><i class="ph-fill ph-sparkle lg-pricing-card__feature-icon"></i> All AI generation models</li>
+                                <li class="lg-pricing-card__feature-item"><i class="ph-fill ph-selection-background lg-pricing-card__feature-icon"></i> Transparent backgrounds</li>
+                                <li class="lg-pricing-card__feature-item"><i class="ph-fill ph-image lg-pricing-card__feature-icon"></i> PNG + JPG downloads</li>
+                                <li class="lg-pricing-card__feature-item"><i class="ph-fill ph-stack lg-pricing-card__feature-icon"></i> 50 logo generations / month</li>
+                            </ul>
+                            <ul class="lg-pricing-card__feature-list--collapsible">
+                                <li class="lg-pricing-card__feature-item"><i class="ph ph-check lg-pricing-card__feature-icon"></i> Standard resolution PNG</li>
+                                <li class="lg-pricing-card__feature-item"><i class="ph ph-check lg-pricing-card__feature-icon"></i> Logo variations & iterations</li>
+                                <li class="lg-pricing-card__feature-item"><i class="ph ph-check lg-pricing-card__feature-icon"></i> Custom color palettes</li>
+                            </ul>
+                            <button class="lg-pricing-card__show-features-btn">
+                                <span>Show all features</span>
+                                <i class="ph ph-caret-down"></i>
+                            </button>
+                        </div>
+
+                        <button class="lg-pricing-card__button">Get Started</button>
+                        <p class="lg-pricing-card__trust-indicator">Cancel anytime</p>
+                    </article>
+
+                    <!-- Card 2: Pro -->
+                    <article class="lg-pricing-card lg-pricing-card--pro lg-pricing-reveal" style="transition-delay: 300ms;">
+                        <div class="lg-pricing-card__glow-line"></div>
+                        
+                        <div class="lg-pricing-card__popular-badge">
+                            <i class="ph-fill ph-star"></i> Most Popular
+                        </div>
+
+                        <h2 class="lg-pricing-card__tier">Pro</h2>
+                        <p class="lg-pricing-card__desc">For startups and growing brands.</p>
+                        
+                        <div class="lg-pricing-card__price-wrapper">
+                            <span class="lg-pricing-card__price-currency">$</span> 
+                            <span class="lg-pricing-card__price" data-monthly="29" data-yearly="24">29</span>
+                            <span class="lg-pricing-card__price-period">/mo</span>
+                        </div>
+                        <div class="lg-pricing-card__price-billing">billed monthly, cancel anytime</div>
+                        
+                        <div class="lg-pricing-card__credits">
+                            <i class="ph-fill ph-lightning"></i> 250 credits/month
+                        </div>
+                        <div class="lg-pricing-card__price-per-logo" data-monthly-cost="≈ $0.12 per logo" data-yearly-cost="≈ $0.10 per logo">≈ $0.12 per logo</div>
+
+                        <div class="lg-pricing-card__divider"></div>
+
+                        <div class="lg-pricing-card__features-wrapper">
+                            <div class="lg-pricing-card__feature-title">What's included</div>
+                            <ul class="lg-pricing-card__feature-list">
+                                <li class="lg-pricing-card__feature-item"><i class="ph-fill ph-rocket-launch lg-pricing-card__feature-icon"></i> Priority generation queue</li>
+                                <li class="lg-pricing-card__feature-item"><i class="ph-fill ph-files lg-pricing-card__feature-icon"></i> PNG, JPG + SVG vector</li>
+                                <li class="lg-pricing-card__feature-item"><i class="ph-fill ph-palette lg-pricing-card__feature-icon"></i> Custom color palettes</li>
+                                <li class="lg-pricing-card__feature-item"><i class="ph-fill ph-stack lg-pricing-card__feature-icon"></i> 250 logo generations / month</li>
+                            </ul>
+                            <ul class="lg-pricing-card__feature-list--collapsible">
+                                <li class="lg-pricing-card__feature-item"><i class="ph ph-check lg-pricing-card__feature-icon"></i> All AI generation models</li>
+                                <li class="lg-pricing-card__feature-item"><i class="ph ph-check lg-pricing-card__feature-icon"></i> Transparent backgrounds</li>
+                                <li class="lg-pricing-card__feature-item"><i class="ph ph-check lg-pricing-card__feature-icon"></i> Logo variations & iterations</li>
+                                <li class="lg-pricing-card__feature-item"><i class="ph ph-check lg-pricing-card__feature-icon"></i> Batch logo generation</li>
+                            </ul>
+                            <button class="lg-pricing-card__show-features-btn">
+                                <span>Show all features</span>
+                                <i class="ph ph-caret-down"></i>
+                            </button>
+                        </div>
+
+                        <button class="lg-pricing-card__button">Get Started</button>
+                        <p class="lg-pricing-card__trust-indicator">14-day money back guarantee</p>
+                    </article>
+
+                    <!-- Card 3: Business -->
+                    <article class="lg-pricing-card lg-pricing-card--business lg-pricing-reveal" style="transition-delay: 400ms;">
+                        <h2 class="lg-pricing-card__tier">
+                            <i class="ph-fill ph-crown-simple"></i>
+                            Business
+                        </h2>
+                        <p class="lg-pricing-card__desc">For agencies and design teams.</p>
+                        
+                        <div class="lg-pricing-card__price-wrapper">
+                            <span class="lg-pricing-card__price-currency">$</span> 
+                            <span class="lg-pricing-card__price" data-monthly="79" data-yearly="64">79</span>
+                            <span class="lg-pricing-card__price-period">/mo</span>
+                        </div>
+                        <div class="lg-pricing-card__price-billing">billed monthly, cancel anytime</div>
+                        
+                        <div class="lg-pricing-card__credits">
+                            <i class="ph-fill ph-lightning"></i> 1,000 credits/month
+                        </div>
+                        <div class="lg-pricing-card__price-per-logo" data-monthly-cost="≈ $0.08 per logo" data-yearly-cost="≈ $0.06 per logo">≈ $0.08 per logo</div>
+
+                        <div class="lg-pricing-card__divider"></div>
+
+                        <div class="lg-pricing-card__features-wrapper">
+                            <div class="lg-pricing-card__feature-title">What's included</div>
+                            <ul class="lg-pricing-card__feature-list">
+                                <li class="lg-pricing-card__feature-item lg-pricing-card__feature-item--subheading"><i class="ph-fill ph-plus-circle lg-pricing-card__feature-icon"></i> Everything in Pro, plus:</li>
+                                <li class="lg-pricing-card__feature-item"><i class="ph-fill ph-users-three lg-pricing-card__feature-icon"></i> Team collaboration (3 seats)</li>
+                                <li class="lg-pricing-card__feature-item"><i class="ph-fill ph-stack lg-pricing-card__feature-icon"></i> Batch logo generation</li>
+                                <li class="lg-pricing-card__feature-item"><i class="ph-fill ph-chart-line-up lg-pricing-card__feature-icon"></i> API Access</li>
+                            </ul>
+                            <ul class="lg-pricing-card__feature-list--collapsible">
+                                <li class="lg-pricing-card__feature-item"><i class="ph ph-check lg-pricing-card__feature-icon"></i> Dedicated support</li>
+                                <li class="lg-pricing-card__feature-item"><i class="ph ph-check lg-pricing-card__feature-icon"></i> Custom integrations</li>
+                            </ul>
+                            <button class="lg-pricing-card__show-features-btn">
+                                <span>Show all features</span>
+                                <i class="ph ph-caret-down"></i>
+                            </button>
+                        </div>
+
+                        <button class="lg-pricing-card__button">Get Started</button>
+                        <p class="lg-pricing-card__trust-indicator">Volume discounts available</p>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- == SECTION: FAQ                           == -->
+        <!-- ============================================ -->
+        <section id="faq" class="lg-faq-section bg-black font-sans">
+             <header class="relative pt-24 pb-16 px-6 sm:px-12 flex flex-col items-center justify-center text-center border-b border-white/5">
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-neon/5 blur-[120px] rounded-full pointer-events-none"></div>
+
+                <h1 class="font-poppins text-5xl sm:text-6xl lg:text-7xl font-semibold leading-tight tracking-tight mb-8 lg-faq-anim-stagger" style="animation-delay: 0.1s;">
+                    How can we <br> <span class="lg-faq-text-outline italic font-light hover:lg-faq-text-neon-glow hover:text-transparent cursor-default">help you today?</span>
+                </h1>
+
+                <div class="lg-faq-search-wrap w-full max-w-2xl lg-faq-anim-stagger" style="animation-delay: 0.2s;">
+                    <input type="text" id="lg-faq-search" placeholder="Search topics, settings, tools, errors..." 
+                        class="lg-faq-search-input w-full text-white placeholder-gray-500 rounded-2xl py-4 pl-14 pr-6 text-lg font-light shadow-2xl">
+                    <ion-icon name="search-outline" class="absolute left-5 top-1/2 -translate-y-1/2 w-6 h-6 text-gray-500"></ion-icon>
+                </div>
+            </header>
+
+            <div class="max-w-[90rem] mx-auto px-6 sm:px-12 py-16 flex flex-col lg:flex-row gap-16 lg:gap-24">
+
+                <aside class="lg:w-1/4 lg:sticky lg:top-24 h-max flex-shrink-0 flex flex-col lg-faq-anim-stagger" style="animation-delay: 0.3s;">
+                    <div class="text-xs font-poppins text-gray-500 uppercase tracking-widest mb-6 px-2">Support Categories</div>
+
+                    <nav id="lg-faq-filter-nav" class="flex flex-col gap-2">
+                        <button class="lg-faq-nav-button is-active flex items-center gap-4 px-4 py-3.5 text-sm text-left" data-filter="all">
+                            <div class="lg-faq-icon-wrap"><ion-icon name="menu-outline" class="w-4 h-4"></ion-icon></div>
+                            <span>All Topics</span>
+                        </button>
+                        <button class="lg-faq-nav-button flex items-center gap-4 px-4 py-3.5 text-sm text-left" data-filter="getting-started">
+                            <div class="lg-faq-icon-wrap"><ion-icon name="play-outline" class="w-4 h-4"></ion-icon></div>
+                            <span>Getting Started</span>
+                        </button>
+                        <button class="lg-faq-nav-button flex items-center gap-4 px-4 py-3.5 text-sm text-left" data-filter="ai-models">
+                            <div class="lg-faq-icon-wrap"><ion-icon name="flash-outline" class="w-4 h-4"></ion-icon></div>
+                            <span>AI Models</span>
+                        </button>
+                        <button class="lg-faq-nav-button flex items-center gap-4 px-4 py-3.5 text-sm text-left" data-filter="post-processing">
+                            <div class="lg-faq-icon-wrap"><ion-icon name="color-wand-outline" class="w-4 h-4"></ion-icon></div>
+                            <span>Post-Processing</span>
+                        </button>
+                        <button class="lg-faq-nav-button flex items-center gap-4 px-4 py-3.5 text-sm text-left" data-filter="billing">
+                            <div class="lg-faq-icon-wrap"><ion-icon name="card-outline" class="w-4 h-4"></ion-icon></div>
+                            <span>Billing & Credits</span>
+                        </button>
+                        <button class="lg-faq-nav-button flex items-center gap-4 px-4 py-3.5 text-sm text-left" data-filter="account">
+                            <div class="lg-faq-icon-wrap"><ion-icon name="person-circle-outline" class="w-4 h-4"></ion-icon></div>
+                            <span>Account & Security</span>
+                        </button>
+                        <button class="lg-faq-nav-button flex items-center gap-4 px-4 py-3.5 text-sm text-left" data-filter="troubleshooting">
+                            <div class="lg-faq-icon-wrap"><ion-icon name="warning-outline" class="w-4 h-4"></ion-icon></div>
+                            <span>Troubleshooting</span>
+                        </button>
+                    </nav>
+                </aside>
+
+                <div class="lg:w-3/4 flex-1 flex flex-col">
+
+                    <div id="lg-faq-container" class="flex flex-col">
+
+                        <article class="lg-faq-card py-7 cursor-pointer lg-faq-anim-stagger" style="animation-delay: 0.4s;" data-category="getting-started" data-keywords="prompt writing text description generate logo ideas">
+                            <header class="lg-faq-header flex justify-between items-center gap-6">
+                                <h3 class="font-poppins text-xl sm:text-2xl font-light text-gray-200">How do I write the perfect logo prompt?</h3>
+                                <div class="lg-faq-toggle-icon relative w-5 h-5 flex-shrink-0">
+                                    <span class="absolute top-1/2 left-0 w-full h-[1.5px] rounded-full"></span>
+                                    <span class="absolute left-1/2 top-0 w-[1.5px] h-full rounded-full"></span>
+                                </div>
+                            </header>
+                            <div class="lg-faq-content-grid">
+                                <div class="lg-faq-content-inner pt-6 pb-2 cursor-default" onclick="event.stopPropagation()">
+                                    <p class="text-sm font-light text-gray-400 mb-6 leading-relaxed max-w-3xl">The AI understands clear, descriptive instructions. A good prompt acts as a creative brief for the AI engine.</p>
+                                    <div class="ml-2">
+                                        <div class="lg-faq-step step-neon">
+                                            <h4 class="text-white text-base font-medium mb-1">1. Define the Subject & Style</h4>
+                                            <p class="text-sm text-gray-500 font-light leading-relaxed max-w-2xl mb-4">Start with exactly what you want and the artistic style. <br><strong class="text-gray-300">Example:</strong> "A minimalist geometric logo of a wolf's head, flat vector style."</p>
+                                        </div>
+                                        <div class="lg-faq-step step-blue">
+                                            <h4 class="text-white text-base font-medium mb-1">2. Specify Colors & Background</h4>
+                                            <p class="text-sm text-gray-500 font-light leading-relaxed max-w-2xl mb-4">Tell the AI your brand colors. We recommend asking for a solid background to make background removal easier later. <br><strong class="text-gray-300">Example:</strong> "Neon blue and cyber pink accents, solid white background."</p>
+                                        </div>
+                                        <div class="lg-faq-step step-emerald">
+                                            <h4 class="text-white text-base font-medium mb-1">3. Keep text out of the prompt (Usually)</h4>
+                                            <p class="text-sm text-gray-500 font-light leading-relaxed max-w-2xl">Most AI image models struggle to spell words perfectly. It's best to generate the icon/symbol first, and add your typography later in a standard design tool, unless using text-specialized models.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="lg-faq-card py-7 cursor-pointer lg-faq-anim-stagger" style="animation-delay: 0.45s;" data-category="ai-models" data-keywords="models api recraft openrouter flux generation">
+                            <header class="lg-faq-header flex justify-between items-center gap-6">
+                                <h3 class="font-poppins text-xl sm:text-2xl font-light text-gray-200">How does the AI Logo Generator actually work?</h3>
+                                <div class="lg-faq-toggle-icon relative w-5 h-5 flex-shrink-0">
+                                    <span class="absolute top-1/2 left-0 w-full h-[1.5px] rounded-full"></span>
+                                    <span class="absolute left-1/2 top-0 w-[1.5px] h-full rounded-full"></span>
+                                </div>
+                            </header>
+                            <div class="lg-faq-content-grid">
+                                <div class="lg-faq-content-inner pt-6 pb-2 cursor-default" onclick="event.stopPropagation()">
+                                    <p class="text-sm font-light text-gray-400 mb-8 leading-relaxed max-w-3xl">LogoGen utilizes a hybrid architecture, routing your requests to the best specific AI models for different tasks.</p>
+                                    <div class="ml-2">
+                                        <div class="lg-faq-step step-purple">
+                                            <h4 class="text-white text-base font-medium mb-2 flex items-center gap-2">
+                                                OpenRouter API <span class="px-2 py-0.5 rounded text-[10px] bg-purple-500/20 text-purple-300 uppercase tracking-widest border border-purple-500/30">Creation Phase</span>
+                                            </h4>
+                                            <p class="text-sm text-gray-500 font-light leading-relaxed max-w-2xl mb-4">When you type a prompt, we send it to OpenRouter, which connects to models like <strong>Flux</strong> or <strong>DALL-E</strong>. These models are incredible at "imagining" and generating the raw concept art (Text-to-Image).</p>
+                                        </div>
+                                        <div class="lg-faq-step step-emerald">
+                                            <h4 class="text-white text-base font-medium mb-2 flex items-center gap-2">
+                                                Recraft AI API <span class="px-2 py-0.5 rounded text-[10px] bg-emerald-500/20 text-emerald-300 uppercase tracking-widest border border-emerald-500/30">Refinement Phase</span>
+                                            </h4>
+                                            <p class="text-sm text-gray-500 font-light leading-relaxed max-w-2xl">Once you have your generated image, our Recraft integration handles the professional post-processing. Recraft specializes in structural image changes—like turning a pixel image into a scalable vector (SVG) or cleanly stripping backgrounds.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="lg-faq-card py-7 cursor-pointer lg-faq-anim-stagger" style="animation-delay: 0.5s;" data-category="post-processing" data-keywords="svg vector vectorize printing scale quality resize">
+                            <header class="lg-faq-header flex justify-between items-center gap-6">
+                                <h3 class="font-poppins text-xl sm:text-2xl font-light text-gray-200">What is Vectorization (SVG) and why do I need it?</h3>
+                                <div class="lg-faq-toggle-icon relative w-5 h-5 flex-shrink-0">
+                                    <span class="absolute top-1/2 left-0 w-full h-[1.5px] rounded-full"></span>
+                                    <span class="absolute left-1/2 top-0 w-[1.5px] h-full rounded-full"></span>
+                                </div>
+                            </header>
+                            <div class="lg-faq-content-grid">
+                                <div class="lg-faq-content-inner pt-6 pb-2 cursor-default" onclick="event.stopPropagation()">
+                                    <p class="text-sm font-light text-gray-400 mb-6 leading-relaxed max-w-3xl">This is the most crucial step for professional logo design. AI models generate <strong>raster images</strong> (PNGs made of pixels), which get blurry when scaled up. Vectorization fixes this.</p>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4 mb-6">
+                                        <div class="p-5 rounded-xl bg-gray-900 border border-gray-800">
+                                            <h4 class="text-white font-medium text-sm mb-2">Before Vectorizing (PNG/JPG)</h4>
+                                            <p class="text-xs text-gray-500 leading-relaxed font-light">Made of tiny squares (pixels). Perfect for screens, but if you stretch it to print on a billboard or a large t-shirt, it will look pixelated and unprofessional.</p>
+                                        </div>
+                                        <div class="p-5 rounded-xl bg-gray-900 border border-neon/30 relative overflow-hidden">
+                                            <div class="absolute top-0 right-0 w-16 h-16 bg-neon/10 blur-xl"></div>
+                                            <h4 class="text-neon font-medium text-sm mb-2 relative z-10">After Vectorizing (SVG)</h4>
+                                            <p class="text-xs text-gray-400 leading-relaxed font-light relative z-10">Converted into mathematical paths. The logo can be scaled to the size of a building with absolutely <strong>zero loss in quality</strong>. It is the industry standard for brand assets.</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-xs text-gray-500 italic">Our system uses Recraft's advanced V4 engine to perfectly trace and vectorize your AI generations.</p>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="lg-faq-card py-7 cursor-pointer lg-faq-anim-stagger" style="animation-delay: 0.55s;" data-category="post-processing" data-keywords="background remove transparent png upscale crisp resolution">
+                            <header class="lg-faq-header flex justify-between items-center gap-6">
+                                <h3 class="font-poppins text-xl sm:text-2xl font-light text-gray-200">How do Background Removal and Upscaling work?</h3>
+                                <div class="lg-faq-toggle-icon relative w-5 h-5 flex-shrink-0">
+                                    <span class="absolute top-1/2 left-0 w-full h-[1.5px] rounded-full"></span>
+                                    <span class="absolute left-1/2 top-0 w-[1.5px] h-full rounded-full"></span>
+                                </div>
+                            </header>
+                            <div class="lg-faq-content-grid">
+                                <div class="lg-faq-content-inner pt-6 pb-2 cursor-default" onclick="event.stopPropagation()">
+                                    <p class="text-sm font-light text-gray-400 mb-6 leading-relaxed">Beyond vectorization, we offer two other powerful tools to perfect your assets directly from your Dashboard.</p>
+                                    <div class="ml-2">
+                                        <div class="lg-faq-step">
+                                            <h4 class="text-white text-base font-medium mb-1">Remove Background</h4>
+                                            <p class="text-sm text-gray-500 font-light leading-relaxed max-w-2xl mb-4">Clicking this button triggers an AI vision model that identifies the core subject of your logo and erases the background. The result is saved as a <strong>Transparent PNG</strong>, ready to be placed over any color or photo on your website.</p>
+                                        </div>
+                                        <div class="lg-faq-step step-blue">
+                                            <h4 class="text-white text-base font-medium mb-1">Crisp Upscale</h4>
+                                            <p class="text-sm text-gray-500 font-light leading-relaxed max-w-2xl">If you love a generated image but the resolution is too low, the Crisp Upscale tool uses AI to intelligently add missing pixels and enhance details, effectively multiplying the resolution without blurring.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="lg-faq-card py-7 cursor-pointer lg-faq-anim-stagger" style="animation-delay: 0.6s;" data-category="getting-started" data-keywords="history timeline track changes steps my logos gallery">
+                            <header class="lg-faq-header flex justify-between items-center gap-6">
+                                <h3 class="font-poppins text-xl sm:text-2xl font-light text-gray-200">What is the "Changes Timeline"?</h3>
+                                <div class="lg-faq-toggle-icon relative w-5 h-5 flex-shrink-0">
+                                    <span class="absolute top-1/2 left-0 w-full h-[1.5px] rounded-full"></span>
+                                    <span class="absolute left-1/2 top-0 w-[1.5px] h-full rounded-full"></span>
+                                </div>
+                            </header>
+                            <div class="lg-faq-content-grid">
+                                <div class="lg-faq-content-inner pt-6 pb-2 cursor-default" onclick="event.stopPropagation()">
+                                    <p class="text-sm font-light text-gray-400 mb-6 leading-relaxed max-w-2xl">Located in your "My Logos" gallery, the Timeline is a permanent history of every action taken on a specific logo file.</p>
+                                    <p class="text-sm text-gray-500 font-light leading-relaxed mb-4">Instead of creating messy duplicate files every time you edit a logo, we keep them organized in a single linear history. You can see exactly when you generated it, and when you applied post-processing.</p>
+                                    <ul class="space-y-3 mt-6">
+                                        <li class="flex items-center gap-3 text-sm text-gray-300 font-light">
+                                            <span class="w-2 h-2 rounded-full bg-indigo-500"></span> Generated (Original Prompt)
+                                        </li>
+                                        <li class="flex items-center gap-3 text-sm text-gray-300 font-light">
+                                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Vectorized (SVG created)
+                                        </li>
+                                        <li class="flex items-center gap-3 text-sm text-gray-300 font-light">
+                                            <span class="w-2 h-2 rounded-full bg-violet-500"></span> Background Removed
+                                        </li>
+                                        <li class="flex items-center gap-3 text-sm text-gray-300 font-light">
+                                            <span class="w-2 h-2 rounded-full bg-blue-500"></span> Crisp Upscaled
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="lg-faq-card py-7 cursor-pointer lg-faq-anim-stagger" style="animation-delay: 0.65s;" data-category="billing" data-keywords="cost credits deduction math spent usage history">
+                            <header class="lg-faq-header flex justify-between items-center gap-6">
+                                <h3 class="font-poppins text-xl sm:text-2xl font-light text-gray-200">How are credits deducted per action?</h3>
+                                <div class="lg-faq-toggle-icon relative w-5 h-5 flex-shrink-0">
+                                    <span class="absolute top-1/2 left-0 w-full h-[1.5px] rounded-full"></span>
+                                    <span class="absolute left-1/2 top-0 w-[1.5px] h-full rounded-full"></span>
+                                </div>
+                            </header>
+                            <div class="lg-faq-content-grid">
+                                <div class="lg-faq-content-inner pt-6 pb-2 cursor-default" onclick="event.stopPropagation()">
+                                    <p class="text-sm font-light text-gray-400 mb-6 leading-relaxed">Our platform operates on a transparent credit system. Costs vary depending on the computing power required by the specific AI model you choose.</p>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+                                        <div class="p-5 rounded-xl bg-gray-900 border border-gray-800">
+                                            <h4 class="text-white font-medium text-sm mb-2">Dynamic Cost (Generation)</h4>
+                                            <p class="text-xs text-gray-500 leading-relaxed font-light">Generating a logo has a variable cost based on the model selected. High-end premium models (like Flux Pro) will consume more credits per image than standard, faster models. The UI will show you the exact cost before generating.</p>
+                                        </div>
+                                        <div class="p-5 rounded-xl bg-gray-900 border border-gray-800">
+                                            <h4 class="text-neon font-medium text-sm mb-2">Fixed Cost (Post-Processing)</h4>
+                                            <p class="text-xs text-gray-500 leading-relaxed font-light">Subsequent modifications like Vectorization, Background Removal, or Upscaling utilize strict, fixed credit weights per successful action (e.g., Vectorization always costs 1 credit).</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="lg-faq-card py-7 cursor-pointer lg-faq-anim-stagger" style="animation-delay: 0.7s;" data-category="billing" data-keywords="cron scheduler annual refill credits 30 days subscription">
+                            <header class="lg-faq-header flex justify-between items-center gap-6">
+                                <h3 class="font-poppins text-xl sm:text-2xl font-light text-gray-200">How do Annual Plan credit refills work?</h3>
+                                <div class="lg-faq-toggle-icon relative w-5 h-5 flex-shrink-0">
+                                    <span class="absolute top-1/2 left-0 w-full h-[1.5px] rounded-full"></span>
+                                    <span class="absolute left-1/2 top-0 w-[1.5px] h-full rounded-full"></span>
+                                </div>
+                            </header>
+                            <div class="lg-faq-content-grid">
+                                <div class="lg-faq-content-inner pt-6 pb-2 cursor-default" onclick="event.stopPropagation()">
+                                    <p class="text-sm font-light text-gray-400 mb-6 leading-relaxed max-w-3xl">Annual subscribers pay only once a year, but our architecture ensures you receive a fresh batch of credits every single month.</p>
+                                    <div class="p-5 rounded-xl bg-gray-900 border border-gray-800">
+                                        <p class="text-sm text-gray-400 leading-relaxed font-light mb-4">A background system continuously monitors your subscription start date. Exactly every 30 days from your billing cycle start date, the system will:</p>
+                                        <ul class="list-disc list-inside text-xs text-gray-500 space-y-2">
+                                            <li>Reset your available credits to your plan's maximum monthly allowance.</li>
+                                            <li>Send you an automated "Credits Refilled" notification email.</li>
+                                        </ul>
+                                        <p class="text-xs text-gray-600 mt-4 italic">Note: Unused credits do not roll over to the next month.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="lg-faq-card py-7 cursor-pointer lg-faq-anim-stagger" style="animation-delay: 0.9s;" data-category="ai-models" data-keywords="api key openrouter recraft key configuration settings">
+                            <header class="lg-faq-header flex justify-between items-center gap-6">
+                                <h3 class="font-poppins text-xl sm:text-2xl font-light text-gray-200">How do I connect my own API keys?</h3>
+                                <div class="lg-faq-toggle-icon relative w-5 h-5 flex-shrink-0">
+                                    <span class="absolute top-1/2 left-0 w-full h-[1.5px] rounded-full"></span>
+                                    <span class="absolute left-1/2 top-0 w-[1.5px] h-full rounded-full"></span>
+                                </div>
+                            </header>
+                            <div class="lg-faq-content-grid">
+                                <div class="lg-faq-content-inner pt-6 pb-2 cursor-default" onclick="event.stopPropagation()">
+                                    <p class="text-sm font-light text-gray-400 mb-6 leading-relaxed">To customize and activate AI features, you can enter your own API keys in the admin panel.</p>
+                                    <div class="bg-gray-900/50 rounded-xl p-5 border border-gray-800 mb-4">
+                                        <div class="flex items-center gap-3 text-neon mb-2">
+                                            <ion-icon name="key-outline" class="w-5 h-5"></ion-icon>
+                                            <h4 class="text-white font-medium">Configuration Steps</h4>
+                                        </div>
+                                        <ol class="space-y-3 text-sm text-gray-400 list-decimal list-inside">
+                                            <li>Go to <span class="text-gray-200 font-mono text-xs bg-gray-800 px-2 py-1 rounded">LogoGen SaaS → AI API Settings</span> in the WordPress menu.</li>
+                                            <li>In the <strong>OpenRouter.ai</strong> tab, enter your key and save.</li>
+                                            <li>Switch to the <strong>Recraft.ai</strong> tab and enter your Recraft API key.</li>
+                                            <li>Click "Test Connection" on each to verify the keys.</li>
+                                        </ol>
+                                    </div>
+                                    <p class="text-xs text-gray-500 italic">All keys are stored securely in the database.</p>
+                                </div>
+                            </div>
+                        </article>
+
+                    </div>
+
+                    <div id="lg-faq-empty-state" class="lg-faq-util-hidden text-center py-24">
+                        <ion-icon name="sad-outline" class="w-12 h-12 text-gray-800 mx-auto mb-4"></ion-icon>
+                        <h3 class="text-xl text-white font-medium mb-2">No results found</h3>
+                        <p class="text-gray-500 font-light">Try adjusting your search terms or selecting a different category.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
         <!-- The Creator Flow (initially hidden) -->
         <div class="lg-creator-flow" id="lg-creator-flow">
             <button class="lg-creator-back-btn" id="lg-creator-back" title="Go Back"><ion-icon name="arrow-back-outline"></ion-icon></button>
@@ -519,5 +1013,7 @@
     <script src="js/creator.js"></script>
     <script src="js/gallery.js"></script>
     <script src="js/reviews.js"></script>
+    <script src="js/pricing.js"></script>
+    <script src="js/faq.js"></script>
 </body>
 </html>

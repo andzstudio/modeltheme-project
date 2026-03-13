@@ -686,7 +686,7 @@
     text-align: center;
     aspect-ratio: 1 / 0.9; /* Adjusted aspect ratio */
     cursor: pointer;
-    transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+    transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
     position: relative;
 }
 
@@ -737,9 +737,9 @@
     align-items: center;
     justify-content: space-around;
     gap: 10px;
-    opacity: 0;
-    transform: translateY(100%);
-    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity: 1; /* Default state: visible */
+    transform: translateY(0); /* Default state: in position */
+    transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1), transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
     z-index: 1;
 }
 
@@ -751,29 +751,24 @@
     object-fit: contain;
 }
 
+/* NEW: Invert specific example images as requested */
+.lg-style-card__image-preview .inverted-image {
+    filter: invert(1);
+}
+
 #lg-step-style .lg-selection-card .lg-card-label {
-    font-size: 1.1rem;
+    font-size: 0.9rem; /* Default state: smaller font */
     font-weight: 600;
     position: relative;
     z-index: 2;
+    transform: translateY(-160%); /* Default state: moved up */
     transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-#lg-step-style .lg-selection-card:hover .lg-card-label,
-#lg-step-style .lg-selection-card.selected .lg-card-label {
-    transform: translateY(-160%);
-    font-size: 0.9rem;
-}
-
-#lg-step-style .lg-selection-card:hover .lg-card-label {
-    transform: translateY(-160%);
-    font-size: 0.9rem;
-}
-
-#lg-step-style .lg-selection-card:hover .lg-style-card__image-preview,
-#lg-step-style .lg-selection-card.selected .lg-style-card__image-preview {
-    opacity: 1;
-    transform: translateY(0);
+/* New hover effect: subtle lift and shadow */
+#lg-step-style .lg-selection-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.3);
 }
 
 /*
@@ -873,6 +868,18 @@
     display: flex;
     justify-content: center;
     gap: 1rem;
+}
+
+/* NEW: Informational text for example images */
+.lg-step-info-text {
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    opacity: 0.7;
+    margin-top: 1.5rem;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /*
@@ -1431,5 +1438,5 @@
        USER FEEDBACK: Animation was too fast. The scrollMultiplier in JS was increased to 75.
        New Calculation: 100vh (initial view) + (4.5s animation * 75% vh/s multiplier) = 100vh + 337.5vh = 437.5vh.
        Rounded up to 440vh for a small safety margin. */
-    height: 100vh;
+    height: 440vh;
 }

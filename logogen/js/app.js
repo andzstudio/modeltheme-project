@@ -97,13 +97,16 @@ $(window).on('load', function() {
     // 2. Wait for fill animation to end, then fade out
     setTimeout(function() {
       $loader.addClass('hidden');
-      
-      // 3. After fade out, trigger content animations
-      $loader.one('transitionend', function() {
+
+      // 3. After fade out, trigger content animations.
+      // We use a setTimeout instead of 'transitionend' for robustness. This prevents
+      // the site from staying invisible if the CSS transition is ever removed or fails.
+      // The delay should roughly match the loader's fade-out animation duration.
+      setTimeout(function() {
         $body.addClass('loaded');
         animateCounter('#lg-counter', 700);
         $loader.remove();
-      });
+      }, 500); // 500ms is a standard fade-out duration.
 
     }, 1500); // Corresponds to clip-path transition duration
 
