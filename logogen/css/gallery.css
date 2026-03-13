@@ -1,0 +1,198 @@
+/*
+  ============================================
+  ==  SECTION: GALLERY SHOWCASE
+  ============================================
+*/
+.lg-gallery {
+    position: relative;
+    height: 100vh;
+    background-color: #000;
+    overflow: hidden;
+}
+
+/* Ambient Diffuse Background Lights */
+.lg-gallery__ambient-light {
+    position: absolute;
+    width: 50vw;
+    height: 50vw;
+    background: var(--color-primary);
+    border-radius: 50%;
+    filter: blur(150px);
+    opacity: 0.1;
+    pointer-events: none;
+    z-index: 0;
+}
+.lg-gallery__ambient-light--top-left { top: -20%; left: -10%; }
+.lg-gallery__ambient-light--bottom-right { bottom: -20%; right: -10%; }
+
+/* Central Title with Blend Mode */
+.lg-gallery__title-wrapper {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 50;
+    mix-blend-mode: difference;
+}
+
+.lg-gallery__title {
+    font-size: clamp(2.5rem, 6vw, 8rem);
+    line-height: 0.9;
+    text-transform: uppercase;
+    letter-spacing: -0.04em;
+    color: #fff;
+    text-align: center;
+    margin: 0;
+    white-space: nowrap;
+    font-family: var(--font-primary);
+    font-weight: 900;
+}
+
+.lg-gallery__title-outline {
+    color: transparent;
+    -webkit-text-stroke: 2px #fff;
+    text-stroke: 2px #fff;
+}
+
+/* Carousel Tracks - Vertical */
+.lg-gallery__track-wrapper {
+    position: absolute;
+    inset-y: 0;
+    height: 100vh;
+    overflow: hidden;
+    pointer-events: auto;
+    width: 42vw;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+}
+
+@media (min-width: 768px) {
+    .lg-gallery__track-wrapper {
+        width: 25vw;
+    }
+}
+
+.lg-gallery__track-wrapper--left { left: 4vw; }
+.lg-gallery__track-wrapper--right { right: 4vw; }
+
+.lg-gallery__track {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-bottom: 1.5rem;
+    width: 100%;
+    will-change: transform;
+}
+
+/*
+  ============================================
+  ==  GALLERY ITEM & NEW HOVER EFFECT
+  ============================================
+*/
+.lg-gallery__item {
+    position: relative;
+    width: 100%;
+    border-radius: 1rem;
+    overflow: hidden;
+    cursor: pointer;
+    background: #111;
+    -webkit-mask-image: -webkit-radial-gradient(white, black); /* Fix for border-radius overflow */
+}
+
+.lg-gallery__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transform: scale(1.0);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* On hover, zoom the image slightly */
+.lg-gallery__item:hover img {
+    transform: scale(1.05);
+}
+
+/* The content block that slides up */
+.lg-gallery__item-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.25rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.8) 50%, transparent 100%);
+    transform: translateY(100%);
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* On hover, slide the content block in */
+.lg-gallery__item:hover .lg-gallery__item-content {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Prompt text styling */
+.lg-gallery__item-prompt {
+    font-family: var(--font-secondary);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Actions container */
+.lg-gallery__item-actions {
+    display: flex;
+    gap: 0.75rem;
+}
+
+/* Redesigned buttons */
+.lg-gallery__item-actions .lg-button {
+    flex-grow: 1;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.8rem;
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.lg-button--copy-prompt {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--color-light);
+}
+.lg-button--copy-prompt:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.lg-button--generate {
+    background: rgba(192, 255, 0, 0.8);
+    border-color: transparent;
+    color: var(--color-dark);
+}
+.lg-button--generate:hover {
+    background: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(192, 255, 0, 0.2);
+}
+
+.lg-button--copy-prompt:disabled {
+    background: rgba(192, 255, 0, 0.2);
+    color: var(--color-primary);
+    cursor: default;
+    transform: none;
+}

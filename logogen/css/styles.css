@@ -1,0 +1,682 @@
+/*
+  ============================================
+  ==  GLOBAL STYLES & CONFIGURATION
+  ============================================
+*/
+
+:root {
+  --color-primary: #C0FF00; /* Lime Green */
+  --color-dark: #000000;
+  --color-light: #FFFFFF;
+  --color-text-muted: #999999;
+
+  --font-primary: 'Poppins', sans-serif;
+  --font-secondary: 'Inter', sans-serif;
+
+  --spacing-base: 1rem;
+  --border-radius: 8px;
+  --transition-speed: 0.3s;
+}
+
+body {
+  background-color: var(--color-dark);
+  color: var(--color-light);
+  font-family: var(--font-secondary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Used to lock scrolling when the creator is active */
+body.creator-active {
+    overflow: hidden;
+}
+
+/* Hide main page sections that interfere with the creator overlay */
+body.creator-active .lg-why-section {
+    display: none;
+}
+
+/* Lenis Smooth Scroll Styles */
+html.lenis {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Custom Scrollbar */
+/* Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) var(--color-dark);
+}
+/* Webkit */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-dark);
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-primary);
+  border-radius: 10px;
+  border: 2px solid var(--color-dark);
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-light);
+}
+
+.lg-container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 576px) {
+  .lg-container { max-width: 540px; }
+}
+@media (min-width: 768px) {
+  .lg-container { max-width: 720px; }
+}
+@media (min-width: 992px) {
+  .lg-container { max-width: 960px; }
+}
+@media (min-width: 1200px) {
+  .lg-container { max-width: 1140px; }
+}
+
+/*
+  ============================================
+  ==  COMPONENT: LOADER
+  ============================================
+*/
+
+.lg-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background-color: var(--color-dark);
+    display: grid;
+    place-items: center;
+    transition: opacity 0.8s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.lg-loader.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.lg-loader__logo-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+}
+
+.lg-loader__logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80%;
+    /* Unfilled state */
+    filter: grayscale(100%) brightness(0.3);
+}
+
+.lg-loader__logo--filled-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    clip-path: inset(100% 0 0 0); /* Start 100% clipped from the top */
+    transition: clip-path 1.5s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.lg-loader.loading-progress .lg-loader__logo--filled-wrapper {
+    clip-path: inset(0% 0 0 0); /* Animate to 0% clipped (fully visible) */
+}
+
+.lg-loader__logo--filled {
+    filter: none; /* The filled logo has no filter */
+}
+
+/*
+  ============================================
+  ==  COMPONENT: NAVBAR
+  ============================================
+*/
+
+.lg-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: calc(var(--spacing-base) * 1.5) 0;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: background-color var(--transition-speed) ease, padding var(--transition-speed) ease, opacity 0.6s cubic-bezier(0.33, 1, 0.68, 1), transform 0.6s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.lg-navbar.scrolled {  
+  padding: 0.6rem 0; /* Reduced padding for a more compact scrolled state */
+}
+
+.lg-navbar__nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.lg-navbar__brand {
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--color-light);
+  text-decoration: none;
+  transition: font-size var(--transition-speed) ease;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.lg-navbar__menu {
+  transition: all var(--transition-speed) ease;
+}
+
+.lg-navbar__brand-icon {
+  height: 2.2rem;
+  transition: height var(--transition-speed) ease;
+}
+
+.lg-navbar__brand-dot {
+  color: var(--color-primary);
+}
+
+.lg-navbar__brand-text {
+    display: inline-block;
+    transition: opacity 0.4s ease, max-width 0.5s ease 0.1s, margin-left 0.5s ease;
+    max-width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: middle;
+}
+
+.lg-navbar__center {
+  /* Wrapper for centered links, used for desktop layout */
+}
+
+.lg-navbar__actions { /* Wrapper for nav buttons */ }
+
+.lg-navbar__toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--color-light);
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.lg-navbar__links {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: calc(var(--spacing-base) * 1.8);
+  transition: gap var(--transition-speed) ease;
+  gap: 0em;
+}
+
+.lg-navbar__link {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  position: relative;
+  transition: color var(--transition-speed) ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 110px;
+  height: 40px;
+  overflow: hidden;
+}
+
+.lg-navbar__link-text,
+.lg-navbar__link-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1), transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.lg-navbar__link-icon {
+    position: absolute;
+    opacity: 0;
+    transform: translateY(100%);
+    font-size: 1.4rem;
+    color: var(--color-primary);
+}
+
+.lg-navbar__link:hover,
+.lg-navbar__link.active {
+  color: var(--color-light);
+}
+
+.lg-navbar__link:hover .lg-navbar__link-text {
+    opacity: 0;
+    transform: translateY(-100%);
+}
+
+.lg-navbar__link:hover .lg-navbar__link-icon {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Scrolled Navbar: Desktop --- */
+@media (min-width: 992px) {
+
+  .lg-navbar.scrolled {
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 40%, transparent 100%);
+    background-color: transparent !important;
+    backdrop-filter: none !important;
+    border-bottom: none !important;
+  }
+
+  .lg-navbar__center {
+      transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+
+  .lg-navbar.scrolled .lg-navbar__center {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+  }
+
+  .lg-navbar.scrolled .lg-navbar__brand-text {
+      opacity: 0;
+      max-width: 0;
+      margin-left: -0.6rem; /* Compensate for gap */
+      pointer-events: none;
+  }
+
+  .lg-navbar.scrolled .lg-navbar__brand-icon {
+    height: 2.5rem; /* Made icon larger on scroll */
+  }
+
+  .lg-navbar.scrolled .lg-navbar__links {
+    gap: 1.5rem;
+  }
+
+  /* Make the CTA button smaller on scroll */
+  .lg-navbar.scrolled .lg-navbar__actions .lg-button--primary {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  /* Desktop Navbar Layout */
+  .lg-navbar .lg-container {
+    max-width: 100%;
+    padding: 0 4rem; /* Increased padding for wider layout */
+  }
+
+  .lg-navbar__nav {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .lg-navbar__menu {
+    display: contents; /* Magic property to unwrap children for flex layout */
+  }
+
+  .lg-navbar__center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .lg-navbar__actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .lg-navbar__toggle {
+    display: none;
+  }
+
+  /* When creator is active, hide nav elements */
+  .creator-active .lg-navbar__center,
+  .creator-active .lg-navbar__actions {
+      opacity: 0;
+      transform: translateY(-10px);
+      pointer-events: none;
+  }
+}
+
+/* --- Navbar Actions: Mobile --- */
+@media (max-width: 991.98px) {
+  .lg-navbar__actions {
+    padding: var(--spacing-base) var(--spacing-base) 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-base);
+  }
+}
+
+/* --- Scrolled Navbar: Mobile --- */
+@media (max-width: 991.98px) {
+  .lg-navbar.scrolled {
+    background-color: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Navbar Mobile */
+@media (max-width: 991.98px) {
+  .lg-navbar__toggle {
+    z-index: 2; /* Ensure it's above other elements */
+    display: block;
+  }
+  .lg-navbar__menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-dark);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .lg-navbar__menu.open {
+    max-height: 500px; /* Arbitrary large value */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .lg-navbar__links {
+    flex-direction: column;
+    padding: var(--spacing-base) 0;
+    gap: 0; /* Links are tighter */
+  }
+}
+
+/*
+  ============================================
+  ==  SECTION: HERO
+  ============================================
+*/
+
+.lg-hero {
+  height: 100vh;
+  padding-top: 0; /* Removed top padding */
+  display: flex;
+  align-items: center; /* Vertically center content */
+  justify-content: center;
+  text-align: center;
+  position: relative; /* Needed for the gradient overlay */
+}
+
+.lg-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 25vh; /* Height of the gradient */
+  background: linear-gradient(to top, var(--color-dark) 10%, transparent);
+  pointer-events: none; /* Allows clicking through the gradient */
+}
+
+.lg-hero__background {
+  position: absolute;
+  top: 0px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../img/hero/hero.jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+}
+
+.lg-hero__content {
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.lg-hero__pre-slogan {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.7);
+}
+
+.lg-hero__pre-slogan .lg-hero__seen-icon {
+  color: var(--color-primary);
+  font-size: 1.2rem;
+}
+
+.lg-hero__slogan {
+  font-family: var(--font-primary);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.7);
+}
+
+.lg-hero__description {
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
+  color: var(--color-text-muted);
+  max-width: 600px;
+  margin: 0 auto 2rem auto;
+  line-height: 1.7;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.7);
+}
+
+.lg-hero__actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.lg-button {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  font-weight: 600;
+  font-family: var(--font-secondary);
+  transition: all var(--transition-speed) ease;
+  position: relative;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+/*
+  ============================================
+  ==  COMPONENT: BUTTONS
+  ============================================
+*/
+
+.lg-button--primary {
+  background-color: var(--color-primary);
+  color: var(--color-dark);
+  border-color: var(--color-primary);
+  border-radius: 30px;
+  padding: 0.8rem 2rem;
+}
+
+.lg-button--primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(192, 255, 0, 0.5);
+  color: var(--color-dark);
+}
+
+.lg-button--secondary {
+  background: rgba(255, 255, 255, 0);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-color: var(--color-primary);
+  border-radius: 30px;
+  color: var(--color-light);
+}
+
+.lg-button--secondary:hover {
+  box-shadow: 0 0 25px -5px var(--color-primary);
+}
+
+.lg-button--tertiary {
+  background-color: transparent;
+  color: var(--color-light);
+  padding: 0.6rem 1.2rem;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.lg-button--tertiary:hover {
+  color: var(--color-light);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* --- Premium CTA Button with Animated Gradient Border --- */
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes rotate-gradient {
+  to {
+    --angle: 360deg;
+  }
+}
+
+.lg-button--cta-animated {
+  --border-size: 2px;
+  --angle: 0deg;
+
+  background-color: transparent;
+  color: var(--color-light);
+  border: var(--border-size) solid transparent;
+  border-radius: 30px;
+  padding: 0.6rem 1.2rem;
+  position: relative;
+  z-index: 1;
+  
+  /* The magic border: a dark background clipped to the padding, and a conic gradient clipped to the border */
+  background-image: 
+    linear-gradient(to right, var(--color-dark), var(--color-dark)), 
+    conic-gradient(from var(--angle), transparent 0%, var(--color-primary) 20%, transparent 35%);
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+
+  animation: rotate-gradient 4s linear infinite;
+  transition: color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.lg-button--cta-animated:hover {
+  color: var(--color-primary);
+  box-shadow: 0 0 25px -5px var(--color-primary);
+}
+
+.lg-button--hero-cta {
+  background-color: var(--color-primary);
+  color: var(--color-dark);
+  border-radius: 50px;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.lg-button--hero-cta:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(192, 255, 0, 0.5);
+}
+
+/*
+  ============================================
+  ==  COMPONENT: SCROLL TO TOP
+  ============================================
+*/
+
+.lg-scroll-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 50px;
+  height: 50px;
+  background-color: var(--color-primary);
+  color: var(--color-dark);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  z-index: 999;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(20px);
+  visibility: hidden;
+  transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s, box-shadow 0.3s ease;
+}
+
+.lg-scroll-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+.lg-scroll-to-top:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px var(--color-primary);
+}
+
+/*
+  ============================================
+  ==  ANIMATIONS
+  ============================================
+*/
+
+.anim-stagger-item {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.loaded .lg-navbar {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.2s;
+}
+
+.loaded .lg-hero__content .anim-stagger-item:nth-child(1) { transition-delay: 0.4s; }
+.loaded .lg-hero__content .anim-stagger-item:nth-child(2) { transition-delay: 0.5s; }
+.loaded .lg-hero__content .anim-stagger-item:nth-child(3) { transition-delay: 0.6s; }
+.loaded .lg-hero__content .anim-stagger-item:nth-child(4) { transition-delay: 0.7s; }
+
+.loaded .anim-stagger-item {
+  opacity: 1;
+  transform: translateY(0);
+}

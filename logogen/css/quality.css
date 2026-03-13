@@ -1,0 +1,245 @@
+/*
+ * Component-specific styles for the "Why LogoGEN" section.
+ * This file contains all styling for the `.lg-why-section` and its children.
+ */
+
+/* Color Palette */
+:root {
+    --lg-neon: #C0FF00;
+    --lg-black: #000000;
+    --lg-white: #ffffff;
+}
+
+.lg-why-section {
+    position: relative;
+    height: 400vh; 
+    background: #000000;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: #ffffff;
+    overflow: hidden; /* Prevents horizontal scroll during animations */
+}
+
+.lg-why-sticky {
+    position: sticky;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 2000px;
+    /* Subtle grid background for a technical feel */
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+}
+
+/* Main title that animates to the top-left */
+.lg-why-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: 0;
+    font-size: 8vw;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--lg-white);
+    white-space: nowrap;
+    z-index: 20;
+    transform: translate(-50%, -50%);
+    text-shadow: 0 10px 30px rgba(192, 255, 0, 0.1);
+    transform-origin: left top; /* Crucial for correct scaling animation */
+}
+
+.lg-why-title span {
+    color: var(--lg-neon);
+}
+
+/* Wrapper for the animated cards */
+.lg-why-cards-wrapper {
+    position: relative;
+    width: 75vw;
+    max-width: 1200px; /* Slightly smaller to feel more compact */
+    height: 70vh;      /* Reduced height to make space for the title */
+    display: flex;
+    margin-top: 10vh;  /* Pushed down to not overlap with centered title */
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+/* General card design */
+.lg-why-card {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #050505; /* Near-black */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: 2px solid var(--lg-neon); /* Main accent */
+    border-radius: 24px;
+    display: flex;
+    overflow: hidden;
+    box-shadow: -15px 0 50px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    transform: translateX(120vw);
+    transform-origin: left center;
+    will-change: transform, opacity;
+}
+
+/* Left side: Card content (using Grid Layout) */
+.lg-why-card-content {
+    flex: 0 0 65%;
+    padding: 4rem 5rem;
+    display: grid;
+    grid-template-rows: auto 1fr auto; /* Title, Description, Advantages */
+    position: relative;
+    z-index: 2;
+}
+
+/* Card Header (Number + Title) */
+.lg-card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+}
+
+.lg-card-num {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--lg-black);
+    background: var(--lg-neon);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    line-height: 1;
+    margin-top: 0.5rem;
+    box-shadow: 0 0 20px rgba(192, 255, 0, 0.3);
+}
+
+.lg-why-card-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin: 0;
+    color: var(--lg-white);
+    line-height: 1.1;
+}
+
+/* Card Body (Description) */
+.lg-card-body {
+    display: flex;
+    align-items: center; /* Vertically centered */
+    padding-right: 2rem;
+}
+
+.lg-why-card-desc {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 300;
+    margin: 0;
+}
+
+/* Card Footer (Advantages List) */
+.lg-card-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 2rem;
+}
+
+.lg-advantages {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.lg-advantages li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.1rem;
+    color: var(--lg-white);
+    font-weight: 600;
+}
+
+.lg-advantages li svg {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    color: var(--lg-neon);
+}
+
+/* Right side: 3D Icon */
+.lg-why-card-icon-wrapper {
+    flex: 0 0 35%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    perspective: 1000px;
+}
+
+.lg-icon-glow {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    background: var(--lg-neon);
+    filter: blur(120px);
+    opacity: 0.15;
+    z-index: 1;
+    left: calc(50% - 175px); 
+}
+
+.lg-icon-3d {
+    position: relative;
+    left: -40px; /* Moved to the right for better balance */
+    width: 220px;
+    height: 220px;
+    z-index: 2;
+    transform-style: preserve-3d;
+    animation: lg-dramatic-rotate 14s infinite linear;
+}
+
+@keyframes lg-dramatic-rotate {
+    0%   { transform: rotateY(0deg) rotateX(10deg) translateY(0px); }
+    25%  { transform: rotateY(90deg) rotateX(15deg) translateY(-15px); }
+    50%  { transform: rotateY(180deg) rotateX(10deg) translateY(0px); }
+    75%  { transform: rotateY(270deg) rotateX(5deg) translateY(15px); }
+    100% { transform: rotateY(360deg) rotateX(10deg) translateY(0px); }
+}
+
+.lg-icon-layer {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lg-icon-layer svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 10px 30px rgba(192, 255, 0, 0.2));
+}
+
+/* Layers on Z-axis for 3D thickness effect */
+.lg-icon-layer:nth-child(1) { transform: translateZ(10px); }
+.lg-icon-layer:nth-child(2) { transform: translateZ(0px); filter: brightness(0.6); }
+.lg-icon-layer:nth-child(3) { transform: translateZ(-10px); filter: brightness(0.2); }
+
+/* Responsive adjustments for tablet and mobile */
+@media (max-width: 1024px) {
+    .lg-why-card { flex-direction: column; border-left: none; border-top: 2px solid var(--lg-neon); }
+    .lg-why-cards-wrapper { width: 90vw; height: auto; min-height: 80vh; } 
+    .lg-why-card-content { flex: none; padding: 2.5rem; height: 100%; gap: 2rem; }
+    .lg-card-body { padding-right: 0; }
+    .lg-why-card-icon-wrapper { display: none; /* Hide heavy 3D icon on mobile for performance/readability */ }
+    .lg-why-title { font-size: 10vw; }
+    .lg-why-card-title { font-size: 2.5rem; }
+    .lg-why-card-desc { font-size: 1rem; }
+    .lg-advantages li { font-size: 0.95rem; }
+}

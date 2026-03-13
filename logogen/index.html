@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LogoGen AI | Create The Perfect Logo</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;900&family=Playfair+Display:wght@700&family=Arvo:wght@700&family=Dancing+Script:wght@700&family=Pacifico&family=Orbitron:wght@700&family=Lobster&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/quality.css">
+    <link rel="stylesheet" href="css/creator.css">
+    <link rel="stylesheet" href="css/gallery.css">
+    <link rel="stylesheet" href="css/reviews.css">
+</head>
+<body>
+    <svg style="width:0;height:0;position:absolute;" aria-hidden="true" focusable="false">
+        <defs>
+            <linearGradient id="icon-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#C0FF00" />
+                <stop offset="100%" stop-color="#8aab00" />
+            </linearGradient>
+        </defs>
+    </svg>
+    <div class="lg-loader" id="lg-loader">
+        <div class="lg-loader__logo-container">
+            <!-- Base, unfilled logo -->
+            <img src="img/logo/logo-official-white.svg" alt="LogoGen Loading" class="lg-loader__logo">
+            <!-- Clipped wrapper for the fill effect -->
+            <div class="lg-loader__logo--filled-wrapper">
+                <img src="img/logo/logo-official-white.svg" alt="" class="lg-loader__logo lg-loader__logo--filled">
+            </div>
+        </div>
+    </div>
+
+    <header class="lg-navbar" id="lg-navbar">
+        <div class="lg-container">
+            <nav class="lg-navbar__nav">
+                <a href="#" class="lg-navbar__brand">
+                    <img src="img/logo/logo-official-white.svg" alt="LogoGen Logo" class="lg-navbar__brand-icon">
+                </a>
+                <div class="lg-navbar__menu" id="lg-navbar-menu">
+                    <div class="lg-navbar__center">
+                        <ul class="lg-navbar__links">
+                            <li><a href="#" class="lg-navbar__link active" data-target="#">
+                                <span class="lg-navbar__link-text">Home</span>
+                                <ion-icon name="home-outline" class="lg-navbar__link-icon"></ion-icon>
+                            </a></li>
+                            <li><a href="#gallery" class="lg-navbar__link" data-target="#gallery">
+                                <span class="lg-navbar__link-text">Gallery</span>
+                                <ion-icon name="images-outline" class="lg-navbar__link-icon"></ion-icon>
+                            </a></li>
+                            <li><a href="#reviews" class="lg-navbar__link" data-target="#reviews">
+                                <span class="lg-navbar__link-text">Reviews</span>
+                                <ion-icon name="chatbubbles-outline" class="lg-navbar__link-icon"></ion-icon>
+                            </a></li>
+                            <li><a href="#about" class="lg-navbar__link" data-target="#about">
+                                <span class="lg-navbar__link-text">About</span>
+                                <ion-icon name="information-circle-outline" class="lg-navbar__link-icon"></ion-icon>
+                            </a></li>
+                        </ul>
+                    </div>
+                    <div class="lg-navbar__actions">
+                        <a href="#" class="lg-button lg-button--primary" id="lg-navbar-start-btn">
+                            <span>Start for Free</span>
+                        </a>
+                        <a href="#" class="lg-button lg-button--tertiary">
+                            <span>Log in</span>
+                            <ion-icon name="person-outline"></ion-icon>
+                        </a>
+                    </div>
+                </div>
+                <button class="lg-navbar__toggle" id="lg-navbar-toggle" aria-label="Toggle navigation">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="lg-main-container">
+        <section class="lg-hero" id="lg-creator-intro">
+            <div class="lg-hero__background"></div>
+            <div class="lg-container">
+                <div class="lg-hero__content" id="lg-hero-content">
+                    <div class="lg-hero__pre-slogan anim-stagger-item">
+                        <div class="lg-hero__seen-icon">
+                            <ion-icon name="checkmark-done-outline"></ion-icon>
+                        </div>
+                        <span>Already +<span id="lg-counter">0</span> logos created by worldwide members</span>
+                    </div>
+                    <h1 class="lg-hero__slogan anim-stagger-item">Everything you need to <br> create the perfect logo.</h1>
+                    <p class="lg-hero__description anim-stagger-item">Design smarter with AI - generate logos, remove backgrounds, create SVGs, and edit everything in one simple platform.</p>
+                    <div class="lg-hero__actions anim-stagger-item" style="--stagger-delay: 0.7s; --stagger-order: 4;">
+                        <div class="lg-hero-brand-input__wrapper">
+                            <input type="text" class="lg-hero-brand-input__field" id="lg-hero-brand-input" placeholder="Enter your brand name to start">
+                            <button class="lg-hero-brand-input__submit" id="lg-hero-brand-submit" aria-label="Start creating">
+                                <ion-icon name="arrow-forward-outline"></ion-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- == SECTION: GALLERY SHOWCASE              == -->
+        <!-- ============================================ -->
+        <section class="lg-gallery" id="gallery">
+            <!-- Ambient Diffuse Background Lights -->
+            <div class="lg-gallery__ambient-light lg-gallery__ambient-light--top-left"></div>
+            <div class="lg-gallery__ambient-light lg-gallery__ambient-light--bottom-right"></div>
+
+            <!-- Foreground Center Title -->
+            <div class="lg-gallery__title-wrapper">
+                <h1 class="lg-gallery__title">
+                    Community <br> 
+                    <span class="lg-gallery__title-outline">Showcase</span>
+                </h1>
+            </div>
+
+            <!-- Track 1 (Moves Up - Left Side) -->
+            <div class="lg-gallery__track-wrapper lg-gallery__track-wrapper--left">
+                <div class="lg-gallery__track" id="lg-gallery-track-left">
+                    <!-- Row 1 Items (Irregular heights for artistic layout) -->
+                    <div class="lg-gallery__item" style="height: 40vh;">
+                        <img src="img/creations/burgerbrothers.png" alt="Abstract Art">
+                        <div class="lg-gallery__item-content">
+                            <p class="lg-gallery__item-prompt">A vibrant, abstract logo for a tech startup, minimalist style, using neon green and deep purple, 3D render.</p>
+                            <div class="lg-gallery__item-actions">
+                                <button class="lg-button lg-button--copy-prompt"><ion-icon name="copy-outline"></ion-icon> <span>Copy</span></button>
+                                <button class="lg-button lg-button--generate"><ion-icon name="sparkles-outline"></ion-icon> <span>Generate</span></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="lg-gallery__item" style="height: 30vh;">
+                        <img src="img/creations/eximia.png" alt="Architecture">
+                        <div class="lg-gallery__item-content">
+                            <p class="lg-gallery__item-prompt">Geometric pattern, black and gold, art deco style, high contrast, for a luxury brand packaging.</p>
+                            <div class="lg-gallery__item-actions">
+                                <button class="lg-button lg-button--copy-prompt"><ion-icon name="copy-outline"></ion-icon> <span>Copy</span></button>
+                                <button class="lg-button lg-button--generate"><ion-icon name="sparkles-outline"></ion-icon> <span>Generate</span></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg-gallery__item" style="height: 45vh;">
+                        <img src="img/creations/fryday.png" alt="Render">
+                        <div class="lg-gallery__item-content">
+                            <p class="lg-gallery__item-prompt">3D render of a pink donut with sprinkles on a pastel blue background, soft lighting, photorealistic.</p>
+                            <div class="lg-gallery__item-actions">
+                                <button class="lg-button lg-button--copy-prompt"><ion-icon name="copy-outline"></ion-icon> <span>Copy</span></button>
+                                <button class="lg-button lg-button--generate"><ion-icon name="sparkles-outline"></ion-icon> <span>Generate</span></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg-gallery__item" style="height: 35vh;">
+                        <img src="img/creations/into.png" alt="Color Art">
+                        <div class="lg-gallery__item-content">
+                            <p class="lg-gallery__item-prompt">Holographic texture, iridescent colors, liquid metal effect, abstract wallpaper, 8K resolution.</p>
+                            <div class="lg-gallery__item-actions">
+                                <button class="lg-button lg-button--copy-prompt"><ion-icon name="copy-outline"></ion-icon> <span>Copy</span></button>
+                                <button class="lg-button lg-button--generate"><ion-icon name="sparkles-outline"></ion-icon> <span>Generate</span></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg-gallery__item" style="height: 50vh;">
+                        <img src="img/creations/leno.png" alt="Detail">
+                        <div class="lg-gallery__item-content">
+                            <p class="lg-gallery__item-prompt">Colorful ink in water, macro photography, high speed capture, abstract, vibrant, fluid dynamics.</p>
+                            <div class="lg-gallery__item-actions">
+                                <button class="lg-button lg-button--copy-prompt"><ion-icon name="copy-outline"></ion-icon> <span>Copy</span></button>
+                                <button class="lg-button lg-button--generate"><ion-icon name="sparkles-outline"></ion-icon> <span>Generate</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Track 2 (Moves Down - Right Side) -->
+            <div class="lg-gallery__track-wrapper lg-gallery__track-wrapper--right">
+                <div class="lg-gallery__track" id="lg-gallery-track-right">
+                    <!-- Row 2 Items (Irregular heights) -->
+                    <div class="lg-gallery__item" style="height: 35vh;">
+                        <img src="img/creations/skintherapy.png" alt="Logo">
+                        <div class="lg-gallery__item-content">
+                            <p class="lg-gallery__item-prompt">Youtube logo, 3D icon, floating on a dark background, studio lighting, clean, modern.</p>
+                            <div class="lg-gallery__item-actions">
+                                <button class="lg-button lg-button--copy-prompt"><ion-icon name="copy-outline"></ion-icon> <span>Copy</span></button>
+                                <button class="lg-button lg-button--generate"><ion-icon name="sparkles-outline"></ion-icon> <span>Generate</span></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg-gallery__item" style="height: 50vh;">
+                        <img src="img/creations/velluto.png" alt="Portrait">
+                        <div class="lg-gallery__item-content">
+                            <p class="lg-gallery__item-prompt">Photorealistic portrait of a woman with freckles, soft natural lighting, shallow depth of field, captured on a 50mm lens.</p>
+                            <div class="lg-gallery__item-actions">
+                                <button class="lg-button lg-button--copy-prompt"><ion-icon name="copy-outline"></ion-icon> <span>Copy</span></button>
+                                <button class="lg-button lg-button--generate"><ion-icon name="sparkles-outline"></ion-icon> <span>Generate</span></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg-gallery__item" style="height: 30vh;">
+                        <img src="img/creations/techflow.png" alt="Abstract">
+                        <div class="lg-gallery__item-content">
+                            <p class="lg-gallery__item-prompt">Abstract painting, black and white with a single gold line, minimalist, textured canvas.</p>
+                            <div class="lg-gallery__item-actions">
+                                <button class="lg-button lg-button--copy-prompt"><ion-icon name="copy-outline"></ion-icon> <span>Copy</span></button>
+                                <button class="lg-button lg-button--generate"><ion-icon name="sparkles-outline"></ion-icon> <span>Generate</span></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg-gallery__item" style="height: 40vh;">
+                        <img src="img/creations/maxgym.png" alt="Geometry">
+                        <div class="lg-gallery__item-content">
+                            <p class="lg-gallery__item-prompt">Colorful liquid abstract art, acrylic pour, vibrant colors, macro details, high resolution.</p>
+                            <div class="lg-gallery__item-actions">
+                                <button class="lg-button lg-button--copy-prompt"><ion-icon name="copy-outline"></ion-icon> <span>Copy</span></button>
+                                <button class="lg-button lg-button--generate"><ion-icon name="sparkles-outline"></ion-icon> <span>Generate</span></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg-gallery__item" style="height: 45vh;">
+                        <img src="" alt="3D">
+                        <div class="lg-gallery__item-content">
+                            <p class="lg-gallery__item-prompt">3D abstract waves, gradient of pink and blue, smooth, satisfying loop, digital art.</p>
+                            <div class="lg-gallery__item-actions">
+                                <button class="lg-button lg-button--copy-prompt"><ion-icon name="copy-outline"></ion-icon> <span>Copy</span></button>
+                                <button class="lg-button lg-button--generate"><ion-icon name="sparkles-outline"></ion-icon> <span>Generate</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- == SECTION: REVIEWS                       == -->
+        <!-- ============================================ -->
+        <section class="lg-reviews" id="reviews">
+            <div class="lg-reviews__layout">
+                
+                <!-- LEFT SIDE: Sticky Visual Showcase -->
+                <div class="lg-reviews__sticky-pane">
+                    <div class="lg-reviews__image-container">
+                        
+                        <!-- Vertical Slide Image System -->
+                        <div class="lg-reviews__image-slider">
+                            <img id="lg-reviews-showcase-img-0" src="" alt="AI Generated Image 1" class="lg-reviews__slide-img" style="transform: translateY(0%);" loading="eager">
+                            <img id="lg-reviews-showcase-img-1" src="" alt="AI Generated Image 2" class="lg-reviews__slide-img" style="transform: translateY(100%);" loading="eager">
+                        </div>
+                        
+                        <!-- Overlay Gradients for depth and text legibility -->
+                        <div class="lg-reviews__gradient-overlay lg-reviews__gradient-overlay--bottom"></div>
+                        <div class="lg-reviews__gradient-overlay lg-reviews__gradient-overlay--left"></div>
+
+                        <!-- Top Right Decorative Element (Minimalist View Count) -->
+                        <div class="lg-reviews__view-count lg-reviews__glass-panel">
+                            <i class="ph ph-eye"></i>
+                            <span id="lg-reviews-showcase-views">-- views</span>
+                        </div>
+
+                        <!-- Floating Info Badge (Service & User) -->
+                        <div class="lg-reviews__info-badge lg-reviews__glass-panel">
+                            <div class="lg-reviews__info-badge-content">
+                                <div>
+                                    <p class="lg-reviews__info-badge-service">
+                                        <i class="ph-fill ph-magic-wand"></i>
+                                        <span id="lg-reviews-showcase-service">Loading...</span>
+                                    </p>
+                                    <p class="lg-reviews__info-badge-author" id="lg-reviews-showcase-author">@user</p>
+                                </div>
+                                <div class="lg-reviews__info-badge-arrow">
+                                    <i class="ph ph-arrow-up-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT SIDE: Scrollable Content (Stats + Reviews) -->
+                <div class="lg-reviews__content-pane">
+                    
+                    <!-- Statistics Section (Header) -->
+                    <div class="lg-reviews__header">
+                        <div class="lg-reviews__tag">
+                            <i class="ph-fill ph-users"></i>
+                            <span>Community Approved</span>
+                        </div>
+                        
+                        <h2 class="lg-reviews__title">
+                            Don't take our word. <br>
+                            <span class="lg-reviews__title--sub">Trust the results.</span>
+                        </h2>
+
+                        <div class="lg-reviews__stats-wrapper">
+                            <!-- Massive Overall Rating -->
+                            <div class="lg-reviews__overall-rating">
+                                <div class="lg-reviews__overall-rating-number">4.9</div>
+                                <div class="lg-reviews__overall-rating-stars-wrapper">
+                                    <div class="lg-reviews__overall-rating-stars">
+                                        <i class="ph-fill ph-star"></i>
+                                        <i class="ph-fill ph-star"></i>
+                                        <i class="ph-fill ph-star"></i>
+                                        <i class="ph-fill ph-star"></i>
+                                        <i class="ph-fill ph-star-half"></i>
+                                    </div>
+                                    <span>from 12,400+ reviews</span>
+                                </div>
+                            </div>
+
+                            <!-- Minimalist Service Breakdown -->
+                            <div class="lg-reviews__service-stats" id="lg-reviews-services-stats">
+                                <!-- Dynamically generated via JS -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reviews List -->
+                    <div id="lg-reviews-list" class="lg-reviews__list">
+                        <!-- Reviews injected here by js/reviews.js -->
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="lg-why-section" id="about">
+            <div class="lg-why-sticky">
+                
+                <h2 class="lg-why-title">What we offer?</span></h2>
+    
+                <div class="lg-why-cards-wrapper">
+                    
+                    <!-- CARD 1: Rapid Delivery -->
+                    <div class="lg-why-card lg-card-1">
+                        <div class="lg-why-card-content">
+                            <!-- Top: Title + Number -->
+                            <div class="lg-card-header">
+                                <span class="lg-card-num">01</span>
+                                <h3 class="lg-why-card-title">Rapid Delivery</h3>
+                            </div>
+                            <!-- Center: Description -->
+                            <div class="lg-card-body">
+                                <p class="lg-why-card-desc">
+                                    Stop waiting weeks for your designs. Your brand new logo will be ready within a few minutes. 
+                                    We use bleeding-edge AI models to instantly generate high-quality concepts tailored to your brand's core identity. 
+                                </p>
+                            </div>
+                            <!-- Bottom: 3 Client Advantages -->
+                            <div class="lg-card-footer">
+                                <ul class="lg-advantages">
+                                    <li>
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                        Attract clients and launch instantly
+                                    </li>
+                                    <li>
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                        Save weeks of unnecessary waiting
+                                    </li>
+                                    <li>
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                        Zero time wasted on endless revisions
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Right: 3D Icon -->
+                        <div class="lg-why-card-icon-wrapper">
+                            <div class="lg-icon-glow"></div>
+                            <div class="lg-icon-3d">
+                                <div class="lg-icon-layer">
+                                    <svg viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M104 248L120 144H48L160 8L144 112H216L104 248Z" fill="url(#grad-neon)"/><defs><linearGradient id="grad-neon" x1="48" y1="8" x2="216" y2="248" gradientUnits="userSpaceOnUse"><stop stop-color="#C0FF00"/><stop offset="1" stop-color="#ffffff"/></linearGradient></defs></svg>
+                                </div>
+                                <div class="lg-icon-layer">
+                                    <svg viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M104 248L120 144H48L160 8L144 112H216L104 248Z" fill="url(#grad-neon)"/></svg>
+                                </div>
+                                <div class="lg-icon-layer">
+                                    <svg viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M104 248L120 144H48L160 8L144 112H216L104 248Z" fill="url(#grad-neon)"/></svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- CARD 2: Simple Pricing -->
+                    <div class="lg-why-card lg-card-2">
+                        <div class="lg-why-card-content">
+                            <div class="lg-card-header"><span class="lg-card-num">02</span><h3 class="lg-why-card-title">Simple Pricing</h3></div>
+                            <div class="lg-card-body"><p class="lg-why-card-desc">No tiers, no complicated pricing, no hidden costs. You pay the standard fee and LogoGEN will design for you. Complete transparency so you can focus on building your business without worrying about budget overruns.</p></div>
+                            <div class="lg-card-footer"><ul class="lg-advantages"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Keep your budget 100% under control</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Never pay extra for hidden agency fees</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Reinvest the saved money into your marketing</li></ul></div>
+                        </div>
+                        <div class="lg-why-card-icon-wrapper">
+                            <div class="lg-icon-glow"></div>
+                            <div class="lg-icon-3d"><div class="lg-icon-layer"><svg viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="128" cy="128" r="112" fill="url(#grad-neon)"/><path d="M128 64V192M104 96H144C152.837 96 160 103.163 160 112C160 120.837 152.837 128 144 128H112C103.163 128 96 135.163 96 144C96 152.837 103.163 160 112 160H152" stroke="#000" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="lg-icon-layer"><svg viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="128" cy="128" r="112" fill="url(#grad-neon)"/><path d="M128 64V192M104 96H144C152.837 96 160 103.163 160 112C160 120.837 152.837 128 144 128H112C103.163 128 96 135.163 96 144C96 152.837 103.163 160 112 160H152" stroke="#000" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="lg-icon-layer"><svg viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="128" cy="128" r="112" fill="url(#grad-neon)"/><path d="M128 64V192M104 96H144C152.837 96 160 103.163 160 112C160 120.837 152.837 128 144 128H112C103.163 128 96 135.163 96 144C96 152.837 103.163 160 112 160H152" stroke="#000" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+                        </div>
+                    </div>
+    
+                    <!-- CARD 3: Uniquely Yours -->
+                    <div class="lg-why-card lg-card-3">
+                        <div class="lg-why-card-content">
+                            <div class="lg-card-header"><span class="lg-card-num">03</span><h3 class="lg-why-card-title">Uniquely Yours</h3></div>
+                            <div class="lg-card-body"><p class="lg-why-card-desc">Every design is made for you and you only. No templates and always high-quality outputs. Your brand is unique, and your logo will reflect exactly that, ensuring you make a memorable impression.</p></div>
+                            <div class="lg-card-footer"><ul class="lg-advantages"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Stand out effortlessly from your competitors</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Dramatically increase customer trust & sales</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Guaranteed premium and expensive brand image</li></ul></div>
+                        </div>
+                        <div class="lg-why-card-icon-wrapper">
+                            <div class="lg-icon-glow"></div>
+                            <div class="lg-icon-3d"><div class="lg-icon-layer"><svg viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M128 240L16 96L72 24H184L240 96L128 240Z" fill="url(#grad-neon)"/><path d="M16 96H240M72 24L128 96L184 24M128 240V96" stroke="#000" stroke-width="8" stroke-linejoin="round"/></svg></div><div class="lg-icon-layer"><svg viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M128 240L16 96L72 24H184L240 96L128 240Z" fill="url(#grad-neon)"/><path d="M16 96H240M72 24L128 96L184 24M128 240V96" stroke="#000" stroke-width="8" stroke-linejoin="round"/></svg></div><div class="lg-icon-layer"><svg viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M128 240L16 96L72 24H184L240 96L128 240Z" fill="url(#grad-neon)"/><path d="M16 96H240M72 24L128 96L184 24M128 240V96" stroke="#000" stroke-width="8" stroke-linejoin="round"/></svg></div></div>
+                        </div>
+                    </div>
+    
+                </div>
+            </div>
+        </section>
+        
+        <!-- The Creator Flow (initially hidden) -->
+        <div class="lg-creator-flow" id="lg-creator-flow">
+            <button class="lg-creator-back-btn" id="lg-creator-back" title="Go Back"><ion-icon name="arrow-back-outline"></ion-icon></button>
+            <button class="lg-creator-cancel-btn" id="lg-creator-cancel" title="Cancel and return to home"><ion-icon name="close-outline"></ion-icon></button>
+            <!-- Step content will be injected here by JS -->
+        </div>
+
+        <!-- Continue Modal -->
+        <div class="lg-continue-modal-overlay" id="lg-continue-overlay">
+            <div class="lg-continue-modal" id="lg-continue-modal">
+                <h3 class="lg-continue-modal__title">Welcome Back!</h3>
+                <p class="lg-continue-modal__desc">You have a session in progress. What would you like to do?</p>
+                <div class="lg-continue-modal__actions">
+                    <button class="lg-button lg-button--secondary" id="lg-continue-new">Start New</button>
+                    <button class="lg-button lg-button--primary" id="lg-continue-resume">Resume Session</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Custom Color Picker Popover -->
+        <div class="lg-color-picker-popover" id="lg-color-picker">
+            <div class="lg-color-picker__swatches" id="lg-color-picker-swatches">
+                <!-- Swatches will be injected by JS -->
+            </div>
+            <div class="lg-color-picker__hex-input-wrapper">
+                <span class="lg-color-picker__hex-symbol">#</span>
+                <input type="text" class="lg-color-picker__hex-input" id="lg-color-picker-hex" maxlength="6">
+            </div>
+            <div class="lg-color-picker__preview" id="lg-color-picker-preview">
+                <div class="lg-color-picker__preview-fill"></div>
+            </div>
+        </div>
+
+        <!-- Exit Confirmation Modal -->
+        <div class="lg-confirm-modal-overlay" id="lg-exit-confirm-overlay">
+            <div class="lg-confirm-modal" id="lg-exit-confirm-modal">
+                <h3 class="lg-confirm-modal__title">Are you sure?</h3>
+                <p class="lg-confirm-modal__desc">Your progress will be saved, but you will exit the creation process.</p>
+                <div class="lg-confirm-modal__actions">
+                    <button class="lg-button lg-button--secondary" id="lg-exit-stay">No, Stay</button>
+                    <button class="lg-button lg-button--primary" id="lg-exit-confirm">Yes, Exit</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Final Overlays -->
+        <div class="lg-creator-final-overlay" id="lg-final-overlay">
+            <h2 class="lg-final-teaser-title" id="lg-final-teaser-title">Here are your generated logos</h2>
+            <div class="lg-final-blur-bg">
+                <div class="lg-final-blurry-card">
+                    <img src="https://images.unsplash.com/photo-1602934445884-da0fa1c9d3b3?q=80&w=958&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Generated Logo Preview 1">
+                </div>
+                <div class="lg-final-blurry-card">
+                    <img src="https://images.unsplash.com/photo-1633409361618-c73427e4e206?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Generated Logo Preview 2">
+                </div>
+                <div class="lg-final-blurry-card">
+                    <img src="https://images.unsplash.com/photo-1584441405886-bc91be61e56a?q=80&w=730&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Generated Logo Preview 3">
+                </div>
+                <div class="lg-final-blurry-card">
+                    <img src="https://images.unsplash.com/photo-1689852501130-e89d9e54aa41?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Generated Logo Preview 4">
+                </div>
+            </div>
+            <div class="lg-final-modal" id="lg-google-modal">
+                <ion-icon name="logo-google" class="lg-google-icon"></ion-icon>
+                <h3 class="lg-final-modal-title">One last step</h3>
+                <p class="lg-final-modal-desc">Sign in to save and view your generated logos.</p>
+                <button class="lg-google-btn">
+                    <ion-icon name="logo-google"></ion-icon>
+                    <span>Sign in with Google</span>
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Scroll to Top Button -->
+    <a href="#" class="lg-scroll-to-top" id="lg-scroll-to-top" aria-label="Scroll to top">
+        <ion-icon name="arrow-up-outline"></ion-icon>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script> <!-- Added for Reviews section -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.6.0/tinycolor.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/quality.js"></script>
+    <script src="js/creator.js"></script>
+    <script src="js/gallery.js"></script>
+    <script src="js/reviews.js"></script>
+</body>
+</html>
