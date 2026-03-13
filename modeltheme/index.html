@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ModelTheme - Refresh Your Website</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="sections/projects/ai-tools/ai-tools.css">
+    <link rel="stylesheet" href="cart.css">
+    <link rel="stylesheet" href="sections/account/account.css">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Modeltheme">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+    <meta name="mobile-web-app-capable" content="yes">
+</head>
+<body>
+
+    <div class="mt-background-glows">
+        <div class="mt-glow-element mt-top-left"></div>
+        <div class="mt-glow-element mt-bottom-right"></div>
+    </div>
+    
+    <main class="mt-page-wrapper">
+
+    <header class="mt-navbar mt-fade-in-up mt-fade-in-up-delay-1">
+        <div class="mt-logo">
+            <a href="index.html"><img src="img/logo.png" alt="Modeltheme Logo"></a>
+        </div>
+        
+        <button class="mt-mobile-toggle" id="mt-mobileToggle">
+            <div class="mt-burger-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </button>
+        
+        <div class="mt-nav-container" id="mt-navContainer">
+            <nav class="mt-nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="ai-tools.html" class="mt-ai-tools-btn">AI Tools <ion-icon name="sparkles-outline" class="mt-ai-sparkle"></ion-icon></a>
+                
+                <div class="mt-dropdown-parent">
+                    <a href="#" class="has-dropdown">Premium Themes & Plugins <ion-icon name="chevron-down-outline" class="mt-chevron"></ion-icon></a>
+                    <div class="mt-dropdown-menu">
+                        <ul class="mt-dropdown-list">
+                            <li><a href="#">WordPress Themes</a></li>
+                            <li><a href="#">WordPress Plugins</a></li>
+                            <li><a href="#">SaaS Plugins</a></li>
+                            <li><a href="#">HubSpot Themes</a></li>
+                            <li><a href="#">HTML Templates</a></li>
+                            <li><a href="ai-tools.html">AI Tools <ion-icon name="sparkles-outline" class="mt-inline-icon"></ion-icon></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mt-dropdown-parent">
+                    <a href="#" class="has-dropdown mt-mobile-blue-text">Hire Us <ion-icon name="chevron-down-outline" class="mt-chevron"></ion-icon></a>
+                    <div class="mt-dropdown-menu">
+                        <ul class="mt-dropdown-list">
+                            <li><a href="#">Theme Customization</a></li>
+                            <li><a href="#">Custom Services</a></li>
+                            <li><a href="#">Hosting</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mt-dropdown-parent">
+                    <a href="#" class="has-dropdown">Blog <ion-icon name="chevron-down-outline" class="mt-chevron"></ion-icon></a>
+                    <div class="mt-dropdown-menu">
+                        <ul class="mt-dropdown-list">
+                            <li><a href="#">Achievements</a></li>
+                            <li><a href="#">Campaigns</a></li>
+                            <li><a href="#">Collections</a></li>
+                            <li><a href="#">Reviews</a></li>
+                            <li><a href="#">Tutorials</a></li>
+                            <li><a href="#">Tips & Tricks</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mt-dropdown-parent">
+                    <a href="#" class="has-dropdown">Contact <ion-icon name="chevron-down-outline" class="mt-chevron"></ion-icon></a>
+                    <div class="mt-dropdown-menu">
+                        <ul class="mt-dropdown-list">
+                            <li><a href="#">Knowledgebase Center</a></li>
+                            <li><a href="#">Support <span class="mt-badge-247">24/7</span></a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Advertise</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="mt-nav-actions">
+                <div class="mt-nav-icons">
+                    <a href="#" id="mt-open-account-btn" class="mt-icon-link" aria-label="My Account">
+                        <span class="mt-icon-label">My Account</span>
+                        <ion-icon name="person-outline"></ion-icon>
+                    </a>
+                    <div class="mt-cart-widget-wrapper">
+                        <a href="#" id="mt-cart-toggle-btn" class="mt-icon-link" aria-label="Shopping Cart">
+                            <span class="mt-icon-label">Shopping Cart</span>
+                            <span class="mt-cart-badge" id="mt-cart-badge">0</span>
+                            <ion-icon name="bag-handle-outline"></ion-icon>
+                        </a>
+                        
+                        <!-- MINI CART DROPDOWN -->
+                        <div class="mt-mini-cart-dropdown">
+                            <div class="mt-mini-cart-header">
+                                <h4>Cart Summary</h4>
+                            </div>
+                            <div class="mt-mini-cart-body" id="mt-mini-cart-body">
+                                <!-- Mini cart items injected here -->
+                            </div>
+                            <div class="mt-mini-cart-empty" id="mt-mini-cart-empty" style="display: none;">
+                                <ion-icon name="bag-outline"></ion-icon>
+                                <p>Your cart is empty.</p>
+                                <a href="#" class="mt-mini-cart-recommendation" onclick="addToCart(event, { id: 'aipt-theme', name: 'AiPT – Next-Gen Artificial Intelligence Theme', price: 59, image: 'img/products/ai-tools/previews/aipt.jpg', category: 'WordPress Theme' }); return false;">
+                                    <img src="img/products/ai-tools/previews/aipt.jpg" alt="Recommended Product">
+                                    <span>Add our Bestseller</span>
+                                </a>
+                            </div>
+                            <div class="mt-mini-cart-footer" id="mt-mini-cart-footer" style="display: none;">
+                                <div class="mt-mini-cart-subtotal-row">
+                                    <span>Subtotal</span>
+                                    <span id="mt-mini-cart-subtotal">$0.00</span>
+                                </div>
+                                <a href="#" id="mt-mini-cart-view-cart-btn" class="mt-btn mt-btn-mini-cart">View Cart & Checkout</a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="mt-icon-link" aria-label="Search">
+                        <span class="mt-icon-label">Search</span>
+                        <ion-icon name="search-outline"></ion-icon>
+                    </a>
+                </div>
+                <a href="#" class="mt-btn mt-btn-quote mt-magnetic-btn"><ion-icon name="create-outline"></ion-icon> Get a Quote</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="mt-hero-section">
+        <div class="mt-hero-content">
+            <h1 class="mt-fade-in-up mt-fade-in-up-delay-2">
+                Smart WordPress Themes for <br>
+                <span class="mt-word-switcher" id="mt-wordSwitcher">
+                    <span class="mt-text-gradient mt-in">Faster Websites</span>
+                </span>
+            </h1>
+            
+            <div class="mt-trust-box mt-fade-in-up mt-fade-in-up-delay-3">
+                <div class="mt-trust-text">
+                    <div class="mt-avatars">
+                        <img src="https://i.pravatar.cc/100?img=32" alt="Avatar User">
+                        <img src="https://i.pravatar.cc/100?img=12" alt="Avatar User">
+                        <img src="https://i.pravatar.cc/100?img=5" alt="Avatar User">
+                    </div>
+                    Trusted by 
+                    <div class="mt-counter">
+                        <span class="mt-counter-number" data-target="29179">0</span>
+                    </div> 
+                    customers
+                </div>
+                <div class="mt-trust-logos">
+                    <div class="mt-envato-logo"><ion-icon name="leaf-outline"></ion-icon> <strong>envato</strong>market</div>
+                    <div class="mt-envato-logo"><ion-icon name="leaf-outline"></ion-icon> <strong>envato</strong>elements</div>
+                </div>
+            </div>
+
+            <div class="mt-action-area mt-fade-in-up mt-fade-in-up-delay-4">
+                <a href="#" class="mt-btn mt-btn-primary mt-magnetic-btn">Browse our Themes</a>
+                <div class="mt-projects-count">
+                    <ion-icon name="layers-outline"></ion-icon> Over <strong class="mt-counter-number" data-target="7500" data-suffix="+">0</strong> projects launched
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-hero-image mt-fade-in-up mt-fade-in-up-delay-5">
+            <img src="img/hero.png" alt="Hero Illustration Workspace">
+        </div>
+    </section>
+
+<section class="mt-ai-tools-section" id="ai-tools">
+        <div class="mt-ai-tools-container">
+<div class="mt-ai-tools-header mt-fade-in-up">
+                <div class="mt-ai-tools-header-text">
+                    <h2 class="mt-ai-tools-title">AI Tools</h2>
+                    <p class="mt-ai-tools-subtitle">Discover next-gen artificial intelligence solutions for WordPress and SaaS.</p>
+                </div>
+                <a href="ai-tools.html" class="mt-btn mt-ai-tools-btn-all mt-magnetic-btn">
+                    All AI Tools <ion-icon name="arrow-forward-outline"></ion-icon>
+                </a>
+            </div>
+
+            <div class="mt-ai-tools-carousel-wrapper mt-fade-in-up mt-fade-in-up-delay-2">
+                <button class="mt-ai-tools-nav-btn prev" aria-label="Previous card">
+                    <ion-icon name="chevron-back-outline"></ion-icon>
+                </button>
+                
+                <div class="mt-ai-tools-track" id="aiToolsTrack">
+                    <div class="mt-ai-tools-card" data-index="0">
+                        <div class="mt-ai-tools-card-inner">
+                            <div class="mt-ai-tools-card-media">
+                                <span class="mt-ai-tools-badge discount">21% OFF</span>
+                                <img src="img/products/ai-tools/previews/aipt.jpg" alt="AiPT Theme" loading="lazy">
+                            </div>
+                            <div class="mt-ai-tools-card-content">
+                                <span class="mt-ai-tools-category">WORDPRESS THEMES</span>
+                                <h3 class="mt-ai-tools-card-title">AiPT – Next-Gen Artificial Intelligence Theme</h3>
+                                <div class="mt-ai-tools-card-meta">
+                                    <div class="mt-ai-tools-price"><del>$75</del> <strong>$59</strong></div>
+                                    <div class="mt-ai-tools-sales"><ion-icon name="cart-outline"></ion-icon> 272 Sales</div>
+                                </div>
+                                <div class="mt-ai-tools-card-actions">
+                                    <button class="mt-ai-tools-action-btn primary" onclick="addToCart(event, { id: 'aipt-theme', name: 'AiPT – Next-Gen Artificial Intelligence Theme', price: 59, image: 'img/products/ai-tools/previews/aipt.jpg', category: 'WordPress Theme' })">Add to Cart</button>
+                                    <button class="mt-ai-tools-action-btn secondary">Preview</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-ai-tools-card" data-index="1">
+                        <div class="mt-ai-tools-card-inner">
+                            <div class="mt-ai-tools-card-media">
+                                <span class="mt-ai-tools-badge new">NEW</span>
+                                <img src="img/products/ai-tools/previews/ainen.jpg" alt="AiNeN Theme" loading="lazy">
+                            </div>
+                            <div class="mt-ai-tools-card-content">
+                                <span class="mt-ai-tools-category">WORDPRESS THEMES</span>
+                                <h3 class="mt-ai-tools-card-title">AiNeN – AI Agent & Automation WordPress Theme</h3>
+                                <div class="mt-ai-tools-card-meta">
+                                    <div class="mt-ai-tools-price"><strong>$75</strong></div>
+                                    <div class="mt-ai-tools-sales"><ion-icon name="cart-outline"></ion-icon> 100 Sales</div>
+                                </div>
+                                <div class="mt-ai-tools-card-actions">
+                                    <button class="mt-ai-tools-action-btn primary" onclick="addToCart(event, { id: 'ainen-theme', name: 'AiNeN – AI Agent & Automation WordPress Theme', price: 75, image: 'img/products/ai-tools/previews/ainen.jpg', category: 'WordPress Theme' })">Add to Cart</button>
+                                    <button class="mt-ai-tools-action-btn secondary">Preview</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-ai-tools-card" data-index="2">
+                        <div class="mt-ai-tools-card-inner">
+                            <div class="mt-ai-tools-card-media">
+                                <span class="mt-ai-tools-badge new">NEW</span>
+                                <img src="img/products/ai-tools/previews/toolbox.jpg" alt="ToolboxAI Plugin" loading="lazy">
+                            </div>
+                            <div class="mt-ai-tools-card-content">
+                                <span class="mt-ai-tools-category">WORDPRESS PLUGINS</span>
+                                <h3 class="mt-ai-tools-card-title">ToolboxAI – AI Tools Directory SaaS</h3>
+                                <div class="mt-ai-tools-card-meta">
+                                    <div class="mt-ai-tools-price"><strong>$49</strong></div>
+                                    <div class="mt-ai-tools-sales"><ion-icon name="cart-outline"></ion-icon> 94 Sales</div>
+                                </div>
+                                <div class="mt-ai-tools-card-actions">
+                                    <button class="mt-ai-tools-action-btn primary" onclick="addToCart(event, { id: 'toolboxai-plugin', name: 'ToolboxAI – AI Tools Directory SaaS', price: 49, image: 'img/products/ai-tools/previews/toolbox.jpg', category: 'WordPress Plugin' })">Add to Cart</button>
+                                    <button class="mt-ai-tools-action-btn secondary">Preview</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-ai-tools-card" data-index="3">
+                        <div class="mt-ai-tools-card-inner">
+                            <div class="mt-ai-tools-card-media">
+                                <img src="img/products/ai-tools/previews/knowledgebase.jpg" alt="AI Knowledgebase Plugin" loading="lazy">
+                            </div>
+                            <div class="mt-ai-tools-card-content">
+                                <span class="mt-ai-tools-category">WORDPRESS PLUGINS</span>
+                                <h3 class="mt-ai-tools-card-title">AI Knowledgebase Premium – WordPress AI Assistant</h3>
+                                <div class="mt-ai-tools-card-meta">
+                                    <div class="mt-ai-tools-price"><strong>$49</strong></div>
+                                    <div class="mt-ai-tools-sales"><ion-icon name="cart-outline"></ion-icon> 29 Sales</div>
+                                </div>
+                                <div class="mt-ai-tools-card-actions">
+                                    <button class="mt-ai-tools-action-btn primary" onclick="addToCart(event, { id: 'aikb-plugin', name: 'AI Knowledgebase Premium – WordPress AI Assistant', price: 49, image: 'img/products/ai-tools/previews/knowledgebase.jpg', category: 'WordPress Plugin' })">Add to Cart</button>
+                                    <button class="mt-ai-tools-action-btn secondary">Preview</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-ai-tools-card" data-index="4">
+                        <div class="mt-ai-tools-card-inner">
+                            <div class="mt-ai-tools-card-media">
+                                <span class="mt-ai-tools-badge new">NEW</span>
+                                <img src="img/products/ai-tools/previews/knowlifi.jpg" alt="Knowlifi Theme" loading="lazy">
+                            </div>
+                            <div class="mt-ai-tools-card-content">
+                                <span class="mt-ai-tools-category">WORDPRESS THEMES</span>
+                                <h3 class="mt-ai-tools-card-title">Knowlifi – E-Learning & AI Knowledgebase Theme</h3>
+                                <div class="mt-ai-tools-card-meta">
+                                    <div class="mt-ai-tools-price"><strong>$75</strong></div>
+                                    <div class="mt-ai-tools-sales"><ion-icon name="cart-outline"></ion-icon> 25 Sales</div>
+                                </div>
+                                <div class="mt-ai-tools-card-actions">
+                                    <button class="mt-ai-tools-action-btn primary" onclick="addToCart(event, { id: 'knowlifi-theme', name: 'Knowlifi – E-Learning & AI Knowledgebase Theme', price: 75, image: 'img/products/ai-tools/previews/knowlifi.jpg', category: 'WordPress Theme' })">Add to Cart</button>
+                                    <button class="mt-ai-tools-action-btn secondary">Preview</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-ai-tools-card" data-index="5">
+                        <div class="mt-ai-tools-card-inner">
+                            <div class="mt-ai-tools-card-media">
+                                <img src="img/products/ai-tools/previews/tld.jpg" alt="AI.TLD Plugin" loading="lazy">
+                            </div>
+                            <div class="mt-ai-tools-card-content">
+                                <span class="mt-ai-tools-category">WORDPRESS PLUGINS</span>
+                                <h3 class="mt-ai-tools-card-title">AI.TLD: AI Search for Available Domain Names</h3>
+                                <div class="mt-ai-tools-card-meta">
+                                    <div class="mt-ai-tools-price"><strong>$45</strong></div>
+                                    <div class="mt-ai-tools-sales"><ion-icon name="cart-outline"></ion-icon> 22 Sales</div>
+                                </div>
+                                <div class="mt-ai-tools-card-actions">
+                                    <button class="mt-ai-tools-action-btn primary" onclick="addToCart(event, { id: 'aitld-plugin', name: 'AI.TLD: AI Search for Available Domain Names', price: 45, image: 'img/products/ai-tools/previews/tld.jpg', category: 'WordPress Plugin' })">Add to Cart</button>
+                                    <button class="mt-ai-tools-action-btn secondary">Preview</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-ai-tools-card" data-index="6">
+                        <div class="mt-ai-tools-card-inner">
+                            <div class="mt-ai-tools-card-media">
+                                <span class="mt-ai-tools-badge new">NEW</span>
+                                <img src="img/products/ai-tools/previews/aikit.jpg" alt="AIKIT Pro Theme" loading="lazy">
+                            </div>
+                            <div class="mt-ai-tools-card-content">
+                                <span class="mt-ai-tools-category">WORDPRESS THEMES</span>
+                                <h3 class="mt-ai-tools-card-title">AIKIT Pro – Bootstrap 5 AI Admin Dashboard</h3>
+                                <div class="mt-ai-tools-card-meta">
+                                    <div class="mt-ai-tools-price"><strong>$19</strong></div>
+                                    <div class="mt-ai-tools-sales"><ion-icon name="cart-outline"></ion-icon> 12 Sales</div>
+                                </div>
+                                <div class="mt-ai-tools-card-actions">
+                                    <button class="mt-ai-tools-action-btn primary" onclick="addToCart(event, { id: 'aikit-theme', name: 'AIKIT Pro – Bootstrap 5 AI Admin Dashboard', price: 19, image: 'img/products/ai-tools/previews/aikit.jpg', category: 'WordPress Theme' })">Add to Cart</button>
+                                    <button class="mt-ai-tools-action-btn secondary">Preview</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-ai-tools-card" data-index="7">
+                        <div class="mt-ai-tools-card-inner">
+                            <div class="mt-ai-tools-card-media">
+                                <span class="mt-ai-tools-badge new">NEW</span>
+                                <img src="img/products/ai-tools/previews/cusina.jpg" alt="Cusina Plugin" loading="lazy">
+                            </div>
+                            <div class="mt-ai-tools-card-content">
+                                <span class="mt-ai-tools-category">WORDPRESS PLUGINS</span>
+                                <h3 class="mt-ai-tools-card-title">Cusina – AI Document Generator</h3>
+                                <div class="mt-ai-tools-card-meta">
+                                    <div class="mt-ai-tools-price"><strong>$49</strong></div>
+                                    <div class="mt-ai-tools-sales"><ion-icon name="cart-outline"></ion-icon> 10 Sales</div>
+                                </div>
+                                <div class="mt-ai-tools-card-actions">
+                                    <button class="mt-ai-tools-action-btn primary" onclick="addToCart(event, { id: 'cusina-plugin', name: 'Cusina – AI Document Generator', price: 49, image: 'img/products/ai-tools/previews/cusina.jpg', category: 'WordPress Plugin' })">Add to Cart</button>
+                                    <button class="mt-ai-tools-action-btn secondary">Preview</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-ai-tools-card" data-index="8">
+                        <div class="mt-ai-tools-card-inner">
+                            <div class="mt-ai-tools-card-media">
+                                <span class="mt-ai-tools-badge new">NEW</span>
+                                <img src="img/products/ai-tools/previews/aicv.jpg" alt="AICVs Plugin" loading="lazy">
+                            </div>
+                            <div class="mt-ai-tools-card-content">
+                                <span class="mt-ai-tools-category">WORDPRESS PLUGINS</span>
+                                <h3 class="mt-ai-tools-card-title">AICVs: AI Resume Scanner, Scorer & ATS Checker</h3>
+                                <div class="mt-ai-tools-card-meta">
+                                    <div class="mt-ai-tools-price"><strong>$49</strong></div>
+                                    <div class="mt-ai-tools-sales"><ion-icon name="cart-outline"></ion-icon> 9 Sales</div>
+                                </div>
+                                <div class="mt-ai-tools-card-actions">
+                                    <button class="mt-ai-tools-action-btn primary" onclick="addToCart(event, { id: 'aicvs-plugin', name: 'AICVs: AI Resume Scanner, Scorer & ATS Checker', price: 49, image: 'img/products/ai-tools/previews/aicv.jpg', category: 'WordPress Plugin' })">Add to Cart</button>
+                                    <button class="mt-ai-tools-action-btn secondary">Preview</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="mt-ai-tools-nav-btn next" aria-label="Next card">
+                    <ion-icon name="chevron-forward-outline"></ion-icon>
+                </button>
+            </div>
+        </div>
+    </section>
+    </main>
+
+    <!-- ================================================== -->
+    <!-- ========= BEGIN: AUTHENTICATION OVERLAY ========== -->
+    <!-- ================================================== -->
+    <div class="mt-auth-overlay" id="mt-authOverlay">
+        <div class="mt-auth-container" id="mt-authContainer">
+            <!-- REGISTER PANEL -->
+            <div class="mt-auth-form-container mt-auth-sign-up-container">
+                <form action="#">
+                    <button type="button" class="mt-auth-back-button">← Go back</button>
+                    <h1>Create Account</h1>
+                    <div class="mt-auth-social-container">
+                        <a href="#" class="mt-auth-social">
+                            <span>Continue with</span>
+                            <img src="img/google.svg" alt="Google Logo" class="mt-auth-google-logo">
+                        </a>
+                    </div>
+                    <span class="mt-auth-separator">or use your email for registration</span>
+                    <div class="mt-auth-input-group">
+                        <label for="regName">Name</label>
+                        <input type="text" id="regName" placeholder="e.g. John Doe" aria-label="Name"/>
+                    </div>
+                    <div class="mt-auth-input-group">
+                        <label for="regEmail">Email</label>
+                        <input type="email" id="regEmail" placeholder="e.g. john.doe@example.com" aria-label="Email"/>
+                    </div>
+                    <div class="mt-auth-input-group mt-auth-password-wrapper">
+                        <label for="regPassword">Password</label>
+                        <input type="password" id="regPassword" placeholder="••••••••" aria-label="Password"/>
+                        <button type="button" class="mt-auth-password-toggle" aria-label="Toggle password visibility">
+                            <ion-icon name="eye-outline" class="mt-icon-eye"></ion-icon>
+                            <ion-icon name="eye-off-outline" class="mt-icon-eye-off"></ion-icon>
+                        </button>
+                    </div>
+                    <button type="button" class="mt-auth-btn">Sign Up</button>
+                    <div class="mt-auth-mobile-switcher">
+                        <p>Already have an account?</p>
+                        <button type="button" id="mt-mobileSignInBtn">Sign In</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- LOGIN PANEL -->
+            <div class="mt-auth-form-container mt-auth-sign-in-container">
+                <form action="#">
+                    <button type="button" class="mt-auth-back-button">← Go back</button>
+                    <h1>Log in to <img src="img/logo.png" alt="Modeltheme Logo" class="mt-auth-h1-logo"></h1>
+                    <div class="mt-auth-social-container">
+                        <a href="#" class="mt-auth-social">
+                            <span>Continue with</span>
+                            <img src="img/google.svg" alt="Google Logo" class="mt-auth-google-logo">
+                        </a>
+                    </div>
+                    <span class="mt-auth-separator">or use your email account</span>
+                    <div class="mt-auth-input-group">
+                        <label for="loginEmail">Email</label>
+                        <input type="email" id="loginEmail" placeholder="e.g. john.doe@example.com" aria-label="Email"/>
+                    </div>
+                    <div class="mt-auth-input-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" placeholder="••••••••" aria-label="Password"/>
+                        <button type="button" class="mt-auth-password-toggle" aria-label="Toggle password visibility">
+                            <ion-icon name="eye-outline" class="mt-icon-eye"></ion-icon>
+                            <ion-icon name="eye-off-outline" class="mt-icon-eye-off"></ion-icon>
+                        </button>
+                    </div>
+                    <a href="#" class="mt-auth-forgot-password"><ion-icon name="key-outline"></ion-icon>Forgot your password?</a>
+                    <button type="button" class="mt-auth-btn">Sign In</button>
+                    <div class="mt-auth-mobile-switcher">
+                        <p>Don't have an account?</p>
+                        <button type="button" id="mt-mobileSignUpBtn">Sign Up</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- FORGOT PASSWORD PANEL -->
+            <div class="mt-auth-form-container mt-auth-forgot-password-container">
+                <form action="#">
+                    <button type="button" class="mt-auth-back-button">← Go back</button>
+                    <h1>Reset Password</h1>
+                    <span class="mt-auth-separator">Enter the email associated with your account</span>
+                    <div class="mt-auth-input-group">
+                        <label for="resetEmail">Email</label>
+                        <input type="email" id="resetEmail" placeholder="e.g. john.doe@example.com" aria-label="Email"/>
+                    </div>
+                    <button type="button" class="mt-auth-btn">Send Reset Link</button>
+                    <a href="#" class="mt-auth-back-to-login" id="mt-backToLoginLink">← Back to Sign In</a>
+                </form>
+            </div>
+
+            <!-- FORGOT PASSWORD - DECORATIVE PANEL -->
+            <div class="mt-auth-forgot-password-deco-panel">
+                <div class="mt-auth-deco-panel-inner">
+                    <div class="mt-auth-deco-content">
+                        <ion-icon name="key-outline" class="mt-auth-deco-icon"></ion-icon>
+                        <h2>Check Your Inbox</h2>
+                        <p>We'll send you a secure link to reset your password and regain access to your account.</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- OVERLAY PANELS (for animation) -->
+            <div class="mt-auth-overlay-container">
+                <div class="mt-auth-overlay-panels">
+                    <div class="mt-auth-overlay-panel mt-auth-overlay-left"><h1>Already with us?</h1><p>It’s great to have you here again. Log in to keep exploring.</p><button class="mt-auth-btn ghost" id="mt-signInBtn">Log In</button></div>
+                    <div class="mt-auth-overlay-panel mt-auth-overlay-right"><h1>New to our platform?</h1><p>Click the button below to join and start discovering everything we offer.</p><button class="mt-auth-btn ghost" id="mt-signUpBtn">Sign Up</button><div class="mt-auth-trust-badge">
+                        <ion-icon name="shield-checkmark-outline"></ion-icon>
+                        <span>Trusted by <span id="mt-auth-community-count">11,492</span> community members</span>
+                    </div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================================== -->
+    <!-- =========== NOTIFICATION CONTAINER ============= -->
+    <!-- ================================================== -->
+    <div id="mt-auth-notification-container"></div>
+
+    <!-- ================================================== -->
+    <!-- ============ SHOPPING CART DRAWER ============== -->
+    <!-- ================================================== -->
+    <div class="mt-cart-drawer-overlay" id="mt-cart-drawer-overlay"></div>
+    <div class="mt-cart-drawer" id="mt-cart-drawer">
+        <div class="mt-cart-header">
+            <h3>Your Cart</h3>
+            <button id="mt-cart-close-btn" class="mt-cart-close-btn" aria-label="Close Cart"><ion-icon name="close-outline"></ion-icon></button>
+        </div>
+        <div class="mt-cart-body" id="mt-cart-body">
+            <!-- Cart items will be injected here -->
+            <div class="mt-cart-empty">
+                <ion-icon name="bag-handle-outline"></ion-icon>
+                <p>Your cart is empty.</p>
+                <span class="mt-cart-empty-suggestion-text">Why not start with our bestseller?</span>
+                <div class="mt-cart-recommendation">
+                    <div class="mt-cart-recommendation-img">
+                        <img src="img/products/ai-tools/previews/aipt.jpg" alt="Recommended Product">
+                    </div>
+                    <div class="mt-cart-recommendation-details">
+                        <h4>AiPT – Next-Gen AI Theme</h4>
+                        <span>$59.00</span>
+                    </div>
+                    <button class="mt-cart-recommendation-add" onclick="addToCart(event, { id: 'aipt-theme', name: 'AiPT – Next-Gen Artificial Intelligence Theme', price: 59, image: 'img/products/ai-tools/previews/aipt.jpg', category: 'WordPress Theme' })">
+                        <ion-icon name="add-outline"></ion-icon>
+                    </button>
+                </div>
+                <a href="ai-tools.html" class="mt-btn mt-btn-secondary-cart">Continue Shopping</a>
+            </div>
+        </div>
+        <div class="mt-cart-footer" style="display: none;">
+            <div class="mt-cart-summary">
+                <div class="mt-cart-subtotal"><span>Subtotal</span><span id="mt-cart-subtotal">$0.00</span></div>
+                <div class="mt-cart-total-items-row"><span>Total Items</span><span id="mt-cart-total-items">0 items</span></div>
+            </div>
+            <button class="mt-btn mt-btn-checkout">Proceed to Checkout</button>
+            <button id="mt-cart-clear-btn" class="mt-cart-clear-btn"><ion-icon name="trash-outline"></ion-icon> Clear Cart</button>
+        </div>
+    </div>
+
+    <!-- ================================================== -->
+    <!-- ================ SCRIPT IMPORTS ================ -->
+    <!-- ================================================== -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/lenis@1.1.2/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="main.js"></script>
+    <script src="sections/account/account.js"></script>
+    <script src="sections/projects/ai-tools/ai-tools.js"></script>
+</body>
+</html>

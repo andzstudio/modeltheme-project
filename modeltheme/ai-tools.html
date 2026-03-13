@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Tools Catalog - ModelTheme</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="ai-tools-page.css">
+    <link rel="stylesheet" href="cart.css">
+    <link rel="stylesheet" href="sections/account/account.css">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Modeltheme">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+    <meta name="mobile-web-app-capable" content="yes">
+</head>
+<body>
+
+    <div class="mt-background-glows">
+        <div class="mt-glow-element mt-top-left"></div>
+        <div class="mt-glow-element mt-bottom-right"></div>
+    </div>
+    
+    <main class="mt-page-wrapper">
+
+    <header class="mt-navbar mt-fade-in-up mt-fade-in-up-delay-1">
+        <div class="mt-logo">
+            <a href="index.html"><img src="img/logo.png" alt="Modeltheme Logo"></a>
+        </div>
+        
+        <button class="mt-mobile-toggle" id="mt-mobileToggle">
+            <div class="mt-burger-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </button>
+        
+        <div class="mt-nav-container" id="mt-navContainer">
+            <nav class="mt-nav-links">
+                <a href="index.html">Home</a>
+                <a href="ai-tools.html" class="mt-ai-tools-btn active">AI Tools <ion-icon name="sparkles-outline" class="mt-ai-sparkle"></ion-icon></a>
+                
+                <div class="mt-dropdown-parent">
+                    <a href="#" class="has-dropdown">Premium Themes & Plugins <ion-icon name="chevron-down-outline" class="mt-chevron"></ion-icon></a>
+                    <div class="mt-dropdown-menu">
+                        <ul class="mt-dropdown-list">
+                            <li><a href="#">WordPress Themes</a></li>
+                            <li><a href="#">WordPress Plugins</a></li>
+                            <li><a href="#">SaaS Plugins</a></li>
+                            <li><a href="#">HubSpot Themes</a></li>
+                            <li><a href="#">HTML Templates</a></li>
+                            <li><a href="ai-tools.html">AI Tools <ion-icon name="sparkles-outline" class="mt-inline-icon"></ion-icon></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mt-dropdown-parent">
+                    <a href="#" class="has-dropdown mt-mobile-blue-text">Hire Us <ion-icon name="chevron-down-outline" class="mt-chevron"></ion-icon></a>
+                    <div class="mt-dropdown-menu">
+                        <ul class="mt-dropdown-list">
+                            <li><a href="#">Theme Customization</a></li>
+                            <li><a href="#">Custom Services</a></li>
+                            <li><a href="#">Hosting</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mt-dropdown-parent">
+                    <a href="#" class="has-dropdown">Blog <ion-icon name="chevron-down-outline" class="mt-chevron"></ion-icon></a>
+                    <div class="mt-dropdown-menu">
+                        <ul class="mt-dropdown-list">
+                            <li><a href="#">Achievements</a></li>
+                            <li><a href="#">Campaigns</a></li>
+                            <li><a href="#">Collections</a></li>
+                            <li><a href="#">Reviews</a></li>
+                            <li><a href="#">Tutorials</a></li>
+                            <li><a href="#">Tips & Tricks</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mt-dropdown-parent">
+                    <a href="#" class="has-dropdown">Contact <ion-icon name="chevron-down-outline" class="mt-chevron"></ion-icon></a>
+                    <div class="mt-dropdown-menu">
+                        <ul class="mt-dropdown-list">
+                            <li><a href="#">Knowledgebase Center</a></li>
+                            <li><a href="#">Support <span class="mt-badge-247">24/7</span></a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Advertise</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="mt-nav-actions">
+                <div class="mt-nav-icons">
+                    <a href="#" id="mt-open-account-btn" class="mt-icon-link" aria-label="My Account">
+                        <span class="mt-icon-label">My Account</span>
+                        <ion-icon name="person-outline"></ion-icon>
+                    </a>
+                    <div class="mt-cart-widget-wrapper">
+                        <a href="#" id="mt-cart-toggle-btn" class="mt-icon-link" aria-label="Shopping Cart">
+                            <span class="mt-icon-label">Shopping Cart</span>
+                            <span class="mt-cart-badge" id="mt-cart-badge">0</span>
+                            <ion-icon name="bag-handle-outline"></ion-icon>
+                        </a>
+                        
+                        <!-- MINI CART DROPDOWN -->
+                        <div class="mt-mini-cart-dropdown">
+                            <div class="mt-mini-cart-header">
+                                <h4>Cart Summary</h4>
+                            </div>
+                            <div class="mt-mini-cart-body" id="mt-mini-cart-body">
+                                <!-- Mini cart items injected here -->
+                            </div>
+                            <div class="mt-mini-cart-empty" id="mt-mini-cart-empty" style="display: none;">
+                                <ion-icon name="bag-outline"></ion-icon>
+                                <p>Your cart is empty.</p>
+                                <a href="#" class="mt-mini-cart-recommendation" onclick="addToCart(event, { id: 'aipt-theme', name: 'AiPT – Next-Gen Artificial Intelligence Theme', price: 59, image: 'img/products/ai-tools/previews/aipt.jpg', category: 'WordPress Theme' }); return false;">
+                                    <img src="img/products/ai-tools/previews/aipt.jpg" alt="Recommended Product">
+                                    <span>Add our Bestseller</span>
+                                </a>
+                            </div>
+                            <div class="mt-mini-cart-footer" id="mt-mini-cart-footer" style="display: none;">
+                                <div class="mt-mini-cart-subtotal-row">
+                                    <span>Subtotal</span>
+                                    <span id="mt-mini-cart-subtotal">$0.00</span>
+                                </div>
+                                <a href="#" id="mt-mini-cart-view-cart-btn" class="mt-btn mt-btn-mini-cart">View Cart & Checkout</a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="mt-icon-link" aria-label="Search">
+                        <span class="mt-icon-label">Search</span>
+                        <ion-icon name="search-outline"></ion-icon>
+                    </a>
+                </div>
+                <a href="#" class="mt-btn mt-btn-quote mt-magnetic-btn"><ion-icon name="create-outline"></ion-icon> Get a Quote</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="mt-catalog-page-wrapper">
+        <header class="mt-catalog-header">
+            <a href="index.html" class="mt-go-back-btn"><ion-icon name="arrow-back-outline"></ion-icon> Back to Home</a>
+            <h1 class="mt-fade-in-up">AI Tools Catalog</h1>
+            <p class="mt-fade-in-up mt-fade-in-up-delay-1">Explore our collection of next-gen AI solutions for WordPress and SaaS.</p>
+        </header>
+
+        <div class="mt-catalog-layout">
+            <aside class="mt-catalog-sidebar mt-fade-in-up mt-fade-in-up-delay-2">
+                <button class="mt-mobile-filter-toggle" id="mt-mobile-filter-toggle">
+                    <ion-icon name="options-outline"></ion-icon>
+                    <span>Filters</span>
+                </button>
+                <div class="mt-sidebar-inner">
+                    <div class="mt-filter-group">
+                        <div class="mt-search-wrapper">
+                            <ion-icon name="search-outline"></ion-icon>
+                            <input type="text" id="mt-search-input" placeholder="Search tools...">
+                        </div>
+                    </div>
+
+                    <div class="mt-filter-group">
+                        <label for="mt-sort-select">Sort by</label>
+                        <div class="mt-sort-dropdown" id="mt-sort-dropdown">
+                            <button class="mt-sort-trigger" id="mt-sort-trigger">
+                                <span id="mt-sort-trigger-text">Most Popular</span>
+                                <ion-icon name="chevron-down-outline" class="mt-chevron"></ion-icon>
+                            </button>
+                            <div class="mt-sort-options">
+                                <ul id="mt-sort-list">
+                                    <li data-value="sales_desc" class="active">Most Popular</li>
+                                    <li data-value="price_asc">Price: Low to High</li>
+                                    <li data-value="price_desc">Price: High to Low</li>
+                                    <li data-value="name_asc">Name: A-Z</li>
+                                    <li data-value="name_desc">Name: Z-A</li>
+                                    <li data-value="sales_asc">Least Popular</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-filter-group">
+                        <label>Price Range</label>
+                        <div class="mt-price-slider-container" id="mt-price-slider-container">
+                            <div class="mt-slider-track"></div>
+                            <div class="mt-slider-range" id="mt-slider-range"></div>
+                            <div class="mt-slider-handle" id="mt-handle-min"></div>
+                            <div class="mt-slider-handle" id="mt-handle-max"></div>
+                        </div>
+                        <div class="mt-price-values">
+                            <span id="mt-price-min-val">$0</span> - <span id="mt-price-max-val">$100</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-filter-group">
+                        <label>Categories</label>
+                        <div class="mt-category-filters">
+                            <button class="mt-cat-btn active" data-category="all">All</button>
+                            <button class="mt-cat-btn" data-category="WordPress Themes">Themes</button>
+                            <button class="mt-cat-btn" data-category="WordPress Plugins">Plugins</button>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <main class="mt-catalog-content mt-fade-in-up mt-fade-in-up-delay-3">
+                <div class="mt-active-filters-bar">
+                    <div id="mt-active-filters-container"></div>
+                    <button id="mt-clear-all-filters" class="mt-clear-btn" style="display: none;">
+                        <ion-icon name="trash-outline"></ion-icon> Clear All
+                    </button>
+                </div>
+                <div class="mt-product-grid" id="mt-product-grid">
+                </div>
+                <div id="mt-no-results" style="display: none;">
+                    <ion-icon name="sad-outline"></ion-icon>
+                    <h3>No tools found</h3>
+                    <p>Try adjusting your filters or search term.</p>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    </main>
+
+    <!-- ================================================== -->
+    <!-- ============ SHOPPING CART DRAWER ============== -->
+    <!-- ================================================== -->
+    <div class="mt-cart-drawer-overlay" id="mt-cart-drawer-overlay"></div>
+    <div class="mt-cart-drawer" id="mt-cart-drawer">
+        <div class="mt-cart-header">
+            <h3>Your Cart</h3>
+            <button id="mt-cart-close-btn" class="mt-cart-close-btn" aria-label="Close Cart"><ion-icon name="close-outline"></ion-icon></button>
+        </div>
+        <div class="mt-cart-body" id="mt-cart-body">
+            <!-- Cart items will be injected here -->
+            <div class="mt-cart-empty" style="display: none;">
+                <ion-icon name="bag-handle-outline"></ion-icon>
+                <p>Your cart is empty.</p>
+                <span class="mt-cart-empty-suggestion-text">Why not start with our bestseller?</span>
+                <div class="mt-cart-recommendation">
+                    <div class="mt-cart-recommendation-img">
+                        <img src="img/products/ai-tools/previews/aipt.jpg" alt="Recommended Product">
+                    </div>
+                    <div class="mt-cart-recommendation-details">
+                        <h4>AiPT – Next-Gen AI Theme</h4>
+                        <span>$59.00</span>
+                    </div>
+                    <button class="mt-cart-recommendation-add" onclick="addToCart(event, { id: 'aipt-theme', name: 'AiPT – Next-Gen Artificial Intelligence Theme', price: 59, image: 'img/products/ai-tools/previews/aipt.jpg', category: 'WordPress Theme' })">
+                        <ion-icon name="add-outline"></ion-icon>
+                    </button>
+                </div>
+                <a href="ai-tools.html" class="mt-btn mt-btn-secondary-cart">Continue Shopping</a>
+            </div>
+        </div>
+        <div class="mt-cart-footer" style="display: none;">
+            <div class="mt-cart-summary">
+                <div class="mt-cart-subtotal"><span>Subtotal</span><span id="mt-cart-subtotal">$0.00</span></div>
+                <div class="mt-cart-total-items-row"><span>Total Items</span><span id="mt-cart-total-items">0 items</span></div>
+            </div>
+            <button class="mt-btn mt-btn-checkout">Proceed to Checkout</button>
+            <button id="mt-cart-clear-btn" class="mt-cart-clear-btn"><ion-icon name="trash-outline"></ion-icon> Clear Cart</button>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/lenis@1.1.2/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="main.js"></script>
+    <script src="sections/account/account.js"></script>
+    <script src="ai-tools-data.js"></script>
+    <script src="ai-tools-page.js"></script>
+</body>
+</html>
