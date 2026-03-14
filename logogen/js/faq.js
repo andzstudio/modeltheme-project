@@ -35,10 +35,8 @@ class FaqSupportCenter {
     bindEvents() {
         // FAQ Accordion Toggle
         this.dom.faqItems.forEach(item => {
-            const header = item.querySelector('.lg-faq-header');
-            if (header) {
-                header.addEventListener('click', () => this.toggleFaq(item));
-            }
+            // The entire card is now clickable to toggle the accordion.
+            item.addEventListener('click', () => this.toggleFaq(item));
         });
 
         // Category Filter Click

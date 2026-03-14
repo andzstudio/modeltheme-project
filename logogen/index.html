@@ -43,6 +43,7 @@
     <link rel="stylesheet" href="css/quality.css">
     <link rel="stylesheet" href="css/creator.css">
     <link rel="stylesheet" href="css/gallery.css">
+    <link rel="stylesheet" href="css/services.css">
     <link rel="stylesheet" href="css/pricing.css">
     <link rel="stylesheet" href="css/reviews.css">
     <link rel="stylesheet" href="css/faq.css">
@@ -84,21 +85,25 @@
                                 <span class="lg-navbar__link-text">Gallery</span>
                                 <ion-icon name="images-outline" class="lg-navbar__link-icon"></ion-icon>
                             </a></li>
-                            <li><a href="#reviews" class="lg-navbar__link" data-target="#reviews">
-                                <span class="lg-navbar__link-text">Reviews</span>
-                                <ion-icon name="chatbubbles-outline" class="lg-navbar__link-icon"></ion-icon>
-                            </a></li>
-                            <li><a href="#about" class="lg-navbar__link" data-target="#about">
-                                <span class="lg-navbar__link-text">About</span>
-                                <ion-icon name="information-circle-outline" class="lg-navbar__link-icon"></ion-icon>
+                            <li><a href="#services" class="lg-navbar__link" data-target="#services">
+                                <span class="lg-navbar__link-text">Services</span>
+                                <ion-icon name="sparkles-outline" class="lg-navbar__link-icon"></ion-icon>
                             </a></li>
                             <li><a href="#pricing" class="lg-navbar__link" data-target="#pricing">
                                 <span class="lg-navbar__link-text">Pricing</span>
                                 <ion-icon name="card-outline" class="lg-navbar__link-icon"></ion-icon>
                             </a></li>
+                            <li><a href="#about" class="lg-navbar__link" data-target="#about">
+                                <span class="lg-navbar__link-text">About</span>
+                                <ion-icon name="information-circle-outline" class="lg-navbar__link-icon"></ion-icon>
+                            </a></li>
                             <li><a href="#faq" class="lg-navbar__link" data-target="#faq">
                                 <span class="lg-navbar__link-text">FAQ</span>
                                 <ion-icon name="help-circle-outline" class="lg-navbar__link-icon"></ion-icon>
+                            </a></li>
+                            <li><a href="#reviews" class="lg-navbar__link" data-target="#reviews">
+                                <span class="lg-navbar__link-text">Reviews</span>
+                                <ion-icon name="chatbubbles-outline" class="lg-navbar__link-icon"></ion-icon>
                             </a></li>
                         </ul>
                     </div>
@@ -284,181 +289,110 @@
         </section>
 
         <!-- ============================================ -->
-        <!-- == SECTION: REVIEWS                       == -->
+        <!-- == SECTION: SERVICES SHOWCASE             == -->
         <!-- ============================================ -->
-        <section class="lg-reviews" id="reviews">
-            <div class="lg-reviews__layout">
-                
-                <!-- LEFT SIDE: Sticky Visual Showcase -->
-                <div class="lg-reviews__sticky-pane">
-                    <div class="lg-reviews__image-container">
-                        
-                        <!-- Vertical Slide Image System -->
-                        <div class="lg-reviews__image-slider">
-                            <img id="lg-reviews-showcase-img-0" src="" alt="AI Generated Image 1" class="lg-reviews__slide-img" style="transform: translateY(0%);" loading="eager">
-                            <img id="lg-reviews-showcase-img-1" src="" alt="AI Generated Image 2" class="lg-reviews__slide-img" style="transform: translateY(100%);" loading="eager">
-                        </div>
-                        
-                        <!-- Overlay Gradients for depth and text legibility -->
-                        <div class="lg-reviews__gradient-overlay lg-reviews__gradient-overlay--bottom"></div>
-                        <div class="lg-reviews__gradient-overlay lg-reviews__gradient-overlay--left"></div>
+        <section id="services" class="lg-services-section">
 
-                        <!-- Top Right Decorative Element (Minimalist View Count) -->
-                        <div class="lg-reviews__view-count lg-reviews__glass-panel">
-                            <i class="ph ph-eye"></i>
-                            <span id="lg-reviews-showcase-views">-- views</span>
-                        </div>
-
-                        <!-- Floating Info Badge (Service & User) -->
-                        <div class="lg-reviews__info-badge lg-reviews__glass-panel">
-                            <div class="lg-reviews__info-badge-content">
-                                <div>
-                                    <p class="lg-reviews__info-badge-service">
-                                        <i class="ph-fill ph-magic-wand"></i>
-                                        <span id="lg-reviews-showcase-service">Loading...</span>
-                                    </p>
-                                    <p class="lg-reviews__info-badge-author" id="lg-reviews-showcase-author">@user</p>
-                                </div>
-                                <div class="lg-reviews__info-badge-arrow">
-                                    <i class="ph ph-arrow-up-right"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <header class="lg-services-header lg-services-gs-reveal">
+                <div>
+                    <h1 class="lg-services-header__title">
+                        Our <span class="lg-services-header__title-highlight">Services</span>
+                    </h1>
                 </div>
+            </header>
 
-                <!-- RIGHT SIDE: Scrollable Content (Stats + Reviews) -->
-                <div class="lg-reviews__content-pane">
+            <main class="lg-services-main">
+                <div class="lg-services-accordion-container" id="accordion">
                     
-                    <!-- Statistics Section (Header) -->
-                    <div class="lg-reviews__header">
-                        <div class="lg-reviews__tag">
-                            <i class="ph-fill ph-users"></i>
-                            <span>Community Approved</span>
+                    <article class="lg-services-accordion-card group lg-services-gs-card">
+                        <div class="lg-services-card__badge lg-services-glass-panel">
+                            <div class="lg-services-card__badge-indicator"></div>
+                            <span class="lg-services-card__badge-text">01. Logo Gen</span>
                         </div>
                         
-                        <h2 class="lg-reviews__title">
-                            Don't take our word. <br>
-                            <span class="lg-reviews__title--sub">Trust the results.</span>
-                        </h2>
+                        <div class="lg-services-ui-layer-base">
+                            <img src="img/services/logo.jpg" 
+                                 onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=1000&auto=format&fit=crop';" 
+                                 alt="Generated Image">
+                        </div>
 
-                        <div class="lg-reviews__stats-wrapper">
-                            <!-- Massive Overall Rating -->
-                            <div class="lg-reviews__overall-rating">
-                                <div class="lg-reviews__overall-rating-number">4.9</div>
-                                <div class="lg-reviews__overall-rating-stars-wrapper">
-                                    <div class="lg-reviews__overall-rating-stars">
-                                        <i class="ph-fill ph-star"></i>
-                                        <i class="ph-fill ph-star"></i>
-                                        <i class="ph-fill ph-star"></i>
-                                        <i class="ph-fill ph-star"></i>
-                                        <i class="ph-fill ph-star-half"></i>
-                                    </div>
-                                    <span>from 12,400+ reviews</span>
+                        <div class="lg-services-ui-layer-top lg-services-glass-panel">
+                            <div class="lg-services-card__content-wrapper">
+                                <div class="lg-services-card-content-fade lg-services-card__prompt-text">
+                                    <span class="lg-services-card__prompt-highlight">"</span>Ultra-realistic commercial product photo of a cold Sprite can with condensation droplets, centered on a carved wooden pedestal...<span class="lg-services-card__prompt-highlight">"</span>
                                 </div>
                             </div>
-
-                            <!-- Minimalist Service Breakdown -->
-                            <div class="lg-reviews__service-stats" id="lg-reviews-services-stats">
-                                <!-- Dynamically generated via JS -->
-                            </div>
                         </div>
-                    </div>
 
-                    <!-- Reviews List -->
-                    <div id="lg-reviews-list" class="lg-reviews__list">
-                        <!-- Reviews injected here by js/reviews.js -->
-                    </div>
+                        <div class="lg-services-magic-slider-line"></div>
+                    </article>
+
+                    <article class="lg-services-accordion-card group lg-services-gs-card">
+                        <div class="lg-services-card__badge lg-services-glass-panel">
+                            <div class="lg-services-card__badge-indicator--inactive"></div>
+                            <span class="lg-services-card__badge-text">02. BG Remove</span>
+                        </div>
+                        
+                        <div class="lg-services-ui-layer-base lg-services-ui-layer-base--grid-bg">
+                            <div class="lg-services-card__grid-pattern"></div>
+                            <img src="img/services/no-bg.png" 
+                                 onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1000&auto=format&fit=crop&bg=00000000';" 
+                                 alt="No Background" class="lg-services-img--glow">
+                        </div>
+
+                        <div class="lg-services-ui-layer-top">
+                            <img src="img/services/bg.jpg" 
+                                 onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1000&auto=format&fit=crop';" 
+                                 alt="With Background">
+                        </div>
+
+                        <div class="lg-services-magic-slider-line"></div>
+                    </article>
+
+                    <article class="lg-services-accordion-card group lg-services-gs-card">
+                        <div class="lg-services-card__badge lg-services-glass-panel">
+                            <div class="lg-services-card__badge-indicator--inactive"></div>
+                            <span class="lg-services-card__badge-text">03. Upscale</span>
+                        </div>
+                        
+                        <div class="lg-services-ui-layer-base">
+                            <img src="img/services/4k.jpg" 
+                                 onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop';" 
+                                 alt="4K Quality" class="lg-services-img--enhanced">
+                            <div class="lg-services-card-content-fade lg-services-card__label lg-services-card__label--bottom-right lg-services-glass-panel">4K UHD</div>
+                        </div>
+
+                        <div class="lg-services-ui-layer-top">
+                            <img src="img/services/hd.png" 
+                                 onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop';" 
+                                 alt="Low Quality" class="lg-services-img--faded">
+                            <div class="lg-services-card-content-fade lg-services-card__label lg-services-card__label--bottom-left lg-services-glass-panel">LOW RES</div>
+                        </div>
+
+                        <div class="lg-services-magic-slider-line"></div>
+                    </article>
+
+                    <article class="lg-services-accordion-card group lg-services-gs-card">
+                        <div class="lg-services-card__badge lg-services-glass-panel">
+                            <div class="lg-services-card__badge-indicator--inactive"></div>
+                            <span class="lg-services-card__badge-text">04. Vectorize</span>
+                        </div>
+                        
+                        <div class="lg-services-ui-layer-base">
+                            <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=1000&auto=format&fit=crop" 
+                                 alt="Vectorized" class="lg-services-img--vectorized">
+                        </div>
+
+                        <div class="lg-services-ui-layer-top">
+                            <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=1000&auto=format&fit=crop" 
+                                 alt="Real Photo" class="lg-services-img--faded-slight">
+                        </div>
+
+                        <div class="lg-services-magic-slider-line"></div>
+                    </article>
 
                 </div>
-            </div>
-        </section>
-
-        <section class="lg-why-section" id="about">
-            <div class="lg-why-sticky">
-                
-                <h2 class="lg-why-title">What we offer?</span></h2>
-    
-                <div class="lg-why-cards-wrapper">
-                    
-                    <!-- CARD 1: Rapid Delivery -->
-                    <div class="lg-why-card lg-card-1">
-                        <div class="lg-why-card-content">
-                            <!-- Top: Title + Number -->
-                            <div class="lg-card-header">
-                                <span class="lg-card-num">01</span>
-                                <h3 class="lg-why-card-title">Rapid Delivery</h3>
-                            </div>
-                            <!-- Center: Description -->
-                            <div class="lg-card-body">
-                                <p class="lg-why-card-desc">
-                                    Stop waiting weeks for your designs. Your brand new logo will be ready within a few minutes. 
-                                    We use bleeding-edge AI models to instantly generate high-quality concepts tailored to your brand's core identity. 
-                                </p>
-                            </div>
-                            <!-- Bottom: 3 Client Advantages -->
-                            <div class="lg-card-footer">
-                                <ul class="lg-advantages">
-                                    <li>
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                        Attract clients and launch instantly
-                                    </li>
-                                    <li>
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                        Save weeks of unnecessary waiting
-                                    </li>
-                                    <li>
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                        Zero time wasted on endless revisions
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- Right: 3D Icon -->
-                        <div class="lg-why-card-icon-wrapper">
-                            <div class="lg-icon-glow"></div>
-                            <div class="lg-icon-3d">
-                                <div class="lg-icon-layer">
-                                    <svg viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M104 248L120 144H48L160 8L144 112H216L104 248Z" fill="url(#grad-neon)"/><defs><linearGradient id="grad-neon" x1="48" y1="8" x2="216" y2="248" gradientUnits="userSpaceOnUse"><stop stop-color="#C0FF00"/><stop offset="1" stop-color="#ffffff"/></linearGradient></defs></svg>
-                                </div>
-                                <div class="lg-icon-layer">
-                                    <svg viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M104 248L120 144H48L160 8L144 112H216L104 248Z" fill="url(#grad-neon)"/></svg>
-                                </div>
-                                <div class="lg-icon-layer">
-                                    <svg viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M104 248L120 144H48L160 8L144 112H216L104 248Z" fill="url(#grad-neon)"/></svg>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <!-- CARD 2: Simple Pricing -->
-                    <div class="lg-why-card lg-card-2">
-                        <div class="lg-why-card-content">
-                            <div class="lg-card-header"><span class="lg-card-num">02</span><h3 class="lg-why-card-title">Simple Pricing</h3></div>
-                            <div class="lg-card-body"><p class="lg-why-card-desc">No tiers, no complicated pricing, no hidden costs. You pay the standard fee and LogoGEN will design for you. Complete transparency so you can focus on building your business without worrying about budget overruns.</p></div>
-                            <div class="lg-card-footer"><ul class="lg-advantages"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Keep your budget 100% under control</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Never pay extra for hidden agency fees</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Reinvest the saved money into your marketing</li></ul></div>
-                        </div>
-                        <div class="lg-why-card-icon-wrapper">
-                            <div class="lg-icon-glow"></div>
-                            <div class="lg-icon-3d"><div class="lg-icon-layer"><svg viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="128" cy="128" r="112" fill="url(#grad-neon)"/><path d="M128 64V192M104 96H144C152.837 96 160 103.163 160 112C160 120.837 152.837 128 144 128H112C103.163 128 96 135.163 96 144C96 152.837 103.163 160 112 160H152" stroke="#000" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="lg-icon-layer"><svg viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="128" cy="128" r="112" fill="url(#grad-neon)"/><path d="M128 64V192M104 96H144C152.837 96 160 103.163 160 112C160 120.837 152.837 128 144 128H112C103.163 128 96 135.163 96 144C96 152.837 103.163 160 112 160H152" stroke="#000" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="lg-icon-layer"><svg viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="128" cy="128" r="112" fill="url(#grad-neon)"/><path d="M128 64V192M104 96H144C152.837 96 160 103.163 160 112C160 120.837 152.837 128 144 128H112C103.163 128 96 135.163 96 144C96 152.837 103.163 160 112 160H152" stroke="#000" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
-                        </div>
-                    </div>
-    
-                    <!-- CARD 3: Uniquely Yours -->
-                    <div class="lg-why-card lg-card-3">
-                        <div class="lg-why-card-content">
-                            <div class="lg-card-header"><span class="lg-card-num">03</span><h3 class="lg-why-card-title">Uniquely Yours</h3></div>
-                            <div class="lg-card-body"><p class="lg-why-card-desc">Every design is made for you and you only. No templates and always high-quality outputs. Your brand is unique, and your logo will reflect exactly that, ensuring you make a memorable impression.</p></div>
-                            <div class="lg-card-footer"><ul class="lg-advantages"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Stand out effortlessly from your competitors</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Dramatically increase customer trust & sales</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Guaranteed premium and expensive brand image</li></ul></div>
-                        </div>
-                        <div class="lg-why-card-icon-wrapper">
-                            <div class="lg-icon-glow"></div>
-                            <div class="lg-icon-3d"><div class="lg-icon-layer"><svg viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M128 240L16 96L72 24H184L240 96L128 240Z" fill="url(#grad-neon)"/><path d="M16 96H240M72 24L128 96L184 24M128 240V96" stroke="#000" stroke-width="8" stroke-linejoin="round"/></svg></div><div class="lg-icon-layer"><svg viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M128 240L16 96L72 24H184L240 96L128 240Z" fill="url(#grad-neon)"/><path d="M16 96H240M72 24L128 96L184 24M128 240V96" stroke="#000" stroke-width="8" stroke-linejoin="round"/></svg></div><div class="lg-icon-layer"><svg viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M128 240L16 96L72 24H184L240 96L128 240Z" fill="url(#grad-neon)"/><path d="M16 96H240M72 24L128 96L184 24M128 240V96" stroke="#000" stroke-width="8" stroke-linejoin="round"/></svg></div></div>
-                        </div>
-                    </div>
-    
-                </div>
-            </div>
+            </main>
         </section>
         
         <!-- ============================================ -->
@@ -628,6 +562,96 @@
                         <p class="lg-pricing-card__trust-indicator">Volume discounts available</p>
                     </article>
 
+                </div>
+            </div>
+        </section>
+        
+        <!-- ============================================ -->
+        <!-- == SECTION: ABOUT                         == -->
+        <!-- ============================================ -->
+        <section class="lg-why-section" id="about">
+            <div class="lg-why-sticky">
+                
+                <h2 class="lg-why-title">What we offer?</span></h2>
+    
+                <div class="lg-why-cards-wrapper">
+                    
+                    <!-- CARD 1: Rapid Delivery -->
+                    <div class="lg-why-card lg-card-1">
+                        <div class="lg-why-card-content">
+                            <!-- Top: Title + Number -->
+                            <div class="lg-card-header">
+                                <span class="lg-card-num">01</span>
+                                <h3 class="lg-why-card-title">Rapid Delivery</h3>
+                            </div>
+                            <!-- Center: Description -->
+                            <div class="lg-card-body">
+                                <p class="lg-why-card-desc">
+                                    Stop waiting weeks for your designs. Your brand new logo will be ready within a few minutes. 
+                                    We use bleeding-edge AI models to instantly generate high-quality concepts tailored to your brand's core identity. 
+                                </p>
+                            </div>
+                            <!-- Bottom: 3 Client Advantages -->
+                            <div class="lg-card-footer">
+                                <ul class="lg-advantages">
+                                    <li>
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                        Attract clients and launch instantly
+                                    </li>
+                                    <li>
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                        Save weeks of unnecessary waiting
+                                    </li>
+                                    <li>
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                        Zero time wasted on endless revisions
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Right: 3D Icon -->
+                        <div class="lg-why-card-icon-wrapper">
+                            <div class="lg-icon-glow"></div>
+                            <div class="lg-icon-3d">
+                                <div class="lg-icon-layer">
+                                    <svg viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M104 248L120 144H48L160 8L144 112H216L104 248Z" fill="url(#grad-neon)"/><defs><linearGradient id="grad-neon" x1="48" y1="8" x2="216" y2="248" gradientUnits="userSpaceOnUse"><stop stop-color="#C0FF00"/><stop offset="1" stop-color="#ffffff"/></linearGradient></defs></svg>
+                                </div>
+                                <div class="lg-icon-layer">
+                                    <svg viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M104 248L120 144H48L160 8L144 112H216L104 248Z" fill="url(#grad-neon)"/></svg>
+                                </div>
+                                <div class="lg-icon-layer">
+                                    <svg viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M104 248L120 144H48L160 8L144 112H216L104 248Z" fill="url(#grad-neon)"/></svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- CARD 2: Simple Pricing -->
+                    <div class="lg-why-card lg-card-2">
+                        <div class="lg-why-card-content">
+                            <div class="lg-card-header"><span class="lg-card-num">02</span><h3 class="lg-why-card-title">Simple Pricing</h3></div>
+                            <div class="lg-card-body"><p class="lg-why-card-desc">No tiers, no complicated pricing, no hidden costs. You pay the standard fee and LogoGEN will design for you. Complete transparency so you can focus on building your business without worrying about budget overruns.</p></div>
+                            <div class="lg-card-footer"><ul class="lg-advantages"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Keep your budget 100% under control</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Never pay extra for hidden agency fees</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Reinvest the saved money into your marketing</li></ul></div>
+                        </div>
+                        <div class="lg-why-card-icon-wrapper">
+                            <div class="lg-icon-glow"></div>
+                            <div class="lg-icon-3d"><div class="lg-icon-layer"><svg viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="128" cy="128" r="112" fill="url(#grad-neon)"/><path d="M128 64V192M104 96H144C152.837 96 160 103.163 160 112C160 120.837 152.837 128 144 128H112C103.163 128 96 135.163 96 144C96 152.837 103.163 160 112 160H152" stroke="#000" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="lg-icon-layer"><svg viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="128" cy="128" r="112" fill="url(#grad-neon)"/><path d="M128 64V192M104 96H144C152.837 96 160 103.163 160 112C160 120.837 152.837 128 144 128H112C103.163 128 96 135.163 96 144C96 152.837 103.163 160 112 160H152" stroke="#000" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="lg-icon-layer"><svg viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="128" cy="128" r="112" fill="url(#grad-neon)"/><path d="M128 64V192M104 96H144C152.837 96 160 103.163 160 112C160 120.837 152.837 128 144 128H112C103.163 128 96 135.163 96 144C96 152.837 103.163 160 112 160H152" stroke="#000" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+                        </div>
+                    </div>
+    
+                    <!-- CARD 3: Uniquely Yours -->
+                    <div class="lg-why-card lg-card-3">
+                        <div class="lg-why-card-content">
+                            <div class="lg-card-header"><span class="lg-card-num">03</span><h3 class="lg-why-card-title">Uniquely Yours</h3></div>
+                            <div class="lg-card-body"><p class="lg-why-card-desc">Every design is made for you and you only. No templates and always high-quality outputs. Your brand is unique, and your logo will reflect exactly that, ensuring you make a memorable impression.</p></div>
+                            <div class="lg-card-footer"><ul class="lg-advantages"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Stand out effortlessly from your competitors</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Dramatically increase customer trust & sales</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Guaranteed premium and expensive brand image</li></ul></div>
+                        </div>
+                        <div class="lg-why-card-icon-wrapper">
+                            <div class="lg-icon-glow"></div>
+                            <div class="lg-icon-3d"><div class="lg-icon-layer"><svg viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M128 240L16 96L72 24H184L240 96L128 240Z" fill="url(#grad-neon)"/><path d="M16 96H240M72 24L128 96L184 24M128 240V96" stroke="#000" stroke-width="8" stroke-linejoin="round"/></svg></div><div class="lg-icon-layer"><svg viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M128 240L16 96L72 24H184L240 96L128 240Z" fill="url(#grad-neon)"/><path d="M16 96H240M72 24L128 96L184 24M128 240V96" stroke="#000" stroke-width="8" stroke-linejoin="round"/></svg></div><div class="lg-icon-layer"><svg viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M128 240L16 96L72 24H184L240 96L128 240Z" fill="url(#grad-neon)"/><path d="M16 96H240M72 24L128 96L184 24M128 240V96" stroke="#000" stroke-width="8" stroke-linejoin="round"/></svg></div></div>
+                        </div>
+                    </div>
+    
                 </div>
             </div>
         </section>
@@ -918,6 +942,96 @@
                 </div>
             </div>
         </section>
+        <!-- ============================================ -->
+        <!-- == SECTION: REVIEWS                       == -->
+        <!-- ============================================ -->
+        <section class="lg-reviews" id="reviews">
+            <div class="lg-reviews__layout">
+                
+                <!-- LEFT SIDE: Sticky Visual Showcase -->
+                <div class="lg-reviews__sticky-pane">
+                    <div class="lg-reviews__image-container">
+                        
+                        <!-- Vertical Slide Image System -->
+                        <div class="lg-reviews__image-slider">
+                            <img id="lg-reviews-showcase-img-0" src="" alt="AI Generated Image 1" class="lg-reviews__slide-img" style="transform: translateY(0%);" loading="eager">
+                            <img id="lg-reviews-showcase-img-1" src="" alt="AI Generated Image 2" class="lg-reviews__slide-img" style="transform: translateY(100%);" loading="eager">
+                        </div>
+                        
+                        <!-- Overlay Gradients for depth and text legibility -->
+                        <div class="lg-reviews__gradient-overlay lg-reviews__gradient-overlay--bottom"></div>
+                        <div class="lg-reviews__gradient-overlay lg-reviews__gradient-overlay--left"></div>
+
+                        <!-- Top Right Decorative Element (Minimalist View Count) -->
+                        <div class="lg-reviews__view-count lg-reviews__glass-panel">
+                            <i class="ph ph-eye"></i>
+                            <span id="lg-reviews-showcase-views">-- views</span>
+                        </div>
+
+                        <!-- Floating Info Badge (Service & User) -->
+                        <div class="lg-reviews__info-badge lg-reviews__glass-panel">
+                            <div class="lg-reviews__info-badge-content">
+                                <div>
+                                    <p class="lg-reviews__info-badge-service">
+                                        <i class="ph-fill ph-magic-wand"></i>
+                                        <span id="lg-reviews-showcase-service">Loading...</span>
+                                    </p>
+                                    <p class="lg-reviews__info-badge-author" id="lg-reviews-showcase-author">@user</p>
+                                </div>
+                                <div class="lg-reviews__info-badge-arrow">
+                                    <i class="ph ph-arrow-up-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT SIDE: Scrollable Content (Stats + Reviews) -->
+                <div class="lg-reviews__content-pane">
+                    
+                    <!-- Statistics Section (Header) -->
+                    <div class="lg-reviews__header">
+                        <div class="lg-reviews__tag">
+                            <i class="ph-fill ph-users"></i>
+                            <span>Community Approved</span>
+                        </div>
+                        
+                        <h2 class="lg-reviews__title">
+                            Don't take our word. <br>
+                            <span class="lg-reviews__title--sub">Trust the results.</span>
+                        </h2>
+
+                        <div class="lg-reviews__stats-wrapper">
+                            <!-- Massive Overall Rating -->
+                            <div class="lg-reviews__overall-rating">
+                                <div class="lg-reviews__overall-rating-number">4.9</div>
+                                <div class="lg-reviews__overall-rating-stars-wrapper">
+                                    <div class="lg-reviews__overall-rating-stars">
+                                        <i class="ph-fill ph-star"></i>
+                                        <i class="ph-fill ph-star"></i>
+                                        <i class="ph-fill ph-star"></i>
+                                        <i class="ph-fill ph-star"></i>
+                                        <i class="ph-fill ph-star-half"></i>
+                                    </div>
+                                    <span>from 12,400+ reviews</span>
+                                </div>
+                            </div>
+
+                            <!-- Minimalist Service Breakdown -->
+                            <div class="lg-reviews__service-stats" id="lg-reviews-services-stats">
+                                <!-- Dynamically generated via JS -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reviews List -->
+                    <div id="lg-reviews-list" class="lg-reviews__list">
+                        <!-- Reviews injected here by js/reviews.js -->
+                    </div>
+
+                </div>
+            </div>
+        </section>
 
         <!-- The Creator Flow (initially hidden) -->
         <div class="lg-creator-flow" id="lg-creator-flow">
@@ -1012,6 +1126,7 @@
     <script src="js/quality.js"></script>
     <script src="js/creator.js"></script>
     <script src="js/gallery.js"></script>
+    <script src="js/services.js"></script>
     <script src="js/reviews.js"></script>
     <script src="js/pricing.js"></script>
     <script src="js/faq.js"></script>

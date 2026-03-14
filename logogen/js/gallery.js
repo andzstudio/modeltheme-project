@@ -109,6 +109,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (buttonIcon) buttonIcon.setAttribute('name', 'checkmark-outline');
                 copyButton.disabled = true;
 
+                // Add flash effect to the card
+                if (galleryItem) {
+                    galleryItem.classList.add('is-copied');
+                    // Remove the class after the animation completes to allow re-triggering
+                    galleryItem.addEventListener('animationend', () => {
+                        galleryItem.classList.remove('is-copied');
+                    }, { once: true });
+                }
+
                 // Revert back after a delay
                 setTimeout(() => {
                     if (buttonSpan) buttonSpan.textContent = 'Copy';

@@ -101,37 +101,70 @@ document.addEventListener('DOMContentLoaded', () => {
         const container = document.getElementById('lg-reviews-services-stats');
         if (!container) return;
         let html = '';
-        
+ 
         servicesData.forEach(service => {
             html += `
                 <div class="lg-reviews__service-stat-item" title="${service.score}% satisfaction">
                     <div class="lg-reviews__service-stat-header">
                         <span class="lg-reviews__service-stat-name">${service.name}</span>
-                        <span class="lg-reviews__service-stat-rating">
-                            ${service.rating} 
+                        <span class="lg-reviews__service-stat-rating" data-rating="${service.rating}">
+                            0.0 
                             <i class="ph-fill ph-star"></i>
                         </span>
                     </div>
                     <div class="lg-reviews__service-stat-bar-track">
                         <div class="lg-reviews__service-stat-bar-glow"></div>
                         <div class="lg-reviews__service-stat-bar-fill" 
-                             data-score="${service.score}" 
-                             style="transform: scaleX(0);"></div>
+                             data-score="${service.score}"
+                             style="transform: scaleX(0);">
+                        </div>
                     </div>
                 </div>
             `;
         });
         container.innerHTML = html;
-
-        // Animate bars into view
-        setTimeout(() => {
-            const bars = container.querySelectorAll('[data-score]');
-            bars.forEach(bar => {
-                bar.style.transform = `scaleX(${parseFloat(bar.getAttribute('data-score')) / 100})`;
+ 
+        // Animate stats into view with ScrollTrigger
+        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+            ScrollTrigger.create({
+                trigger: container,
+                start: "top 85%", // Start when 85% of the container is visible
+                once: true, // Animate only once
+                onEnter: () => {
+                    const statItems = container.querySelectorAll('.lg-reviews__service-stat-item');
+                    statItems.forEach((item, index) => {
+                        const bar = item.querySelector('.lg-reviews__service-stat-bar-fill');
+                        const ratingSpan = item.querySelector('.lg-reviews__service-stat-rating');
+                        const targetRating = parseFloat(ratingSpan.dataset.rating);
+ 
+                        // Animate the bar
+                        gsap.to(bar, {
+                            scaleX: parseFloat(bar.dataset.score) / 100,
+                            duration: 1.5,
+                            ease: 'power3.out',
+                            delay: index * 0.1
+                        });
+ 
+                        // Animate the rating number
+                        let counter = { value: 0 };
+                        gsap.to(counter, {
+                            value: targetRating,
+                            duration: 2,
+                            ease: 'power3.out',
+                            delay: index * 0.1,
+                            onUpdate: () => {
+                                // Update the text, keeping one decimal place
+                                ratingSpan.childNodes[0].nodeValue = counter.value.toFixed(1) + ' ';
+                            }
+                        });
+                    });
+                }
             });
-        }, 300);
+        } else {
+            console.error("GSAP or ScrollTrigger not loaded, cannot animate review stats.");
+        }
     }
-
+ 
     function generateStars(rating) {
         return Array(5).fill(0).map((_, i) => 
             i < rating ? `<i class="ph-fill ph-star"></i>` : `<i class="ph ph-star"></i>`

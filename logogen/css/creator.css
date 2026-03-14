@@ -530,6 +530,9 @@
     .lg-palette-grid {
         grid-template-columns: 1fr;
     }
+    .lg-step-content[data-step="industry"] .lg-card-grid {
+        grid-template-columns: repeat(4, 1fr); /* 4 columns on small mobile */
+    }
 }
 
 /*
@@ -671,6 +674,9 @@
 .lg-card-grid--no-scroll .lg-selection-card {
     padding: 1rem;
     aspect-ratio: 1.2 / 1;
+    /* ESTETICĂ: Adăugat gradient și umbră pentru un aspect mai finisat */
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+    box-shadow: inset 0 1px 1px rgba(255,255,255,0.05);
 }
 
 .lg-selection-card {
@@ -745,7 +751,9 @@
 
 .lg-style-card__image-preview img {
     display: block;
-    max-width: 30%;
+    /* max-width: 30%; */ /* REPARAT: Înlocuit cu flex pentru a afișa corect cele 3 imagini */
+    flex: 1 1 0;
+    min-width: 0; /* Previne depășirea containerului de către imagini */
     height: auto;
     max-height: 95%;
     object-fit: contain;
@@ -804,14 +812,20 @@
 }
 
 .lg-font-card__name {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     font-weight: 500;
     color: var(--color-text-muted);
-    transition: color 0.3s ease;
+    /* ESTETICĂ: Numele fontului este acum stilizat ca o "pastilă" (tag) */
+    background: rgba(0,0,0,0.2);
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    margin-top: 0.5rem;
+    transition: all 0.3s ease;
 }
 
 .lg-selection-card.selected .lg-font-card__name {
-    color: var(--color-light);
+    color: var(--color-dark);
+    background-color: var(--color-primary);
 }
 
 .lg-card-grid--no-scroll {
@@ -1438,5 +1452,96 @@
        USER FEEDBACK: Animation was too fast. The scrollMultiplier in JS was increased to 75.
        New Calculation: 100vh (initial view) + (4.5s animation * 75% vh/s multiplier) = 100vh + 337.5vh = 437.5vh.
        Rounded up to 440vh for a small safety margin. */
-    height: 440vh;
+    height: 100vh;
+}
+
+/*
+  ============================================
+  ==  MOBILE & TABLET RESPONSIVE FIXES
+  ============================================
+*/
+
+/* 
+  Fix for "What we offer" section (#about) on mobile.
+  The desktop version uses a complex scroll-based animation that doesn't work well on smaller screens.
+  We will switch to a simple, stacked card layout.
+*/
+@media (max-width: 992px) {
+    .lg-why-section {
+        height: auto !important; /* Let content define height, override inline styles */
+        padding: 4rem 1rem;
+    }
+
+    .lg-why-sticky {
+        position: static !important;
+        height: auto !important;
+        transform: none !important;
+    }
+
+    .lg-why-title {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .lg-why-cards-wrapper {
+        position: static !important;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        height: auto !important;
+        width: 100% !important;
+    }
+
+    .lg-why-card {
+        position: static !important;
+        opacity: 1 !important;
+        transform: none !important;
+        width: 100%;
+        max-width: 550px;
+        margin: 0 auto;
+        /* REPARAT: Layout nou cu flex pentru a afișa iconița lângă text */
+        display: flex !important;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 1.5rem;
+        text-align: left;
+    }
+    
+    .lg-why-card-icon-wrapper {
+        /* display: none; */ /* RE-ACTIVAT: Afișăm iconița */
+        flex-shrink: 0;
+        transform: none !important;
+        position: static !important;
+    }
+    .lg-why-card-icon-wrapper > * {
+        transform: none !important; /* Resetăm orice transformare a iconiței 3D */
+    }
+
+    /* Fix for "Define Your Font Style" step (previews are too large) */
+    .lg-card-grid--no-scroll {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .lg-font-card__preview {
+        font-size: 3.5rem;
+    }
+}
+
+/* Fix for "Choose Logo Styles" step (4 columns are too many on mobile) */
+@media (max-width: 850px) {
+    #lg-step-style .lg-card-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    #lg-step-style .lg-card-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .lg-card-grid--no-scroll {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .lg-font-card__preview {
+        font-size: 2.8rem;
+    }
 }

@@ -245,13 +245,13 @@ input:checked + .lg-pricing__slider:before {
     border-radius: inherit;
     background: radial-gradient(
         350px circle at var(--x, 50%) var(--y, 50%),
-        rgba(255, 255, 255, 0.08), /* Spotlight color */
+        rgba(255, 255, 255, 0.08),
         transparent 80%
     );
     opacity: 0;
     transition: opacity 0.4s ease;
     pointer-events: none; /* Allows clicks to pass through */
-    z-index: 2; /* Above the border, below the content */
+    z-index: 2;
 }
 
 .lg-pricing-card:hover::after {
@@ -330,6 +330,7 @@ input:checked + .lg-pricing__slider:before {
 
 .lg-pricing-card--pro:hover {
     transform: scale(1.03) translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
 }
 
 /* --- TYPOGRAPHY & STRUCTURE --- */
@@ -432,15 +433,7 @@ input:checked + .lg-pricing__slider:before {
     cursor: pointer;
     border: none;
 }
-
-.lg-pricing-card__button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-}
-
-.lg-pricing-card:hover .lg-pricing-card__button {
-    background: #e0e0e0;
-}
+.lg-pricing-card__button:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
 
 .lg-pricing-card--pro .lg-pricing-card__button {
     background: var(--premium-gradient);
@@ -452,10 +445,14 @@ input:checked + .lg-pricing__slider:before {
     box-shadow: 0 8px 25px -5px var(--color-accent-lime), 0 4px 15px -6px var(--color-accent-lime);
 }
 
+.lg-pricing-card:hover .lg-pricing-card__button {
+    background: #e0e0e0;
+}
+
 .lg-pricing-card__trust-indicator {
     font-size: 0.75rem;
     color: var(--color-text-muted);
-    text-align: center;
+    text-align: center; 
     min-height: 1.2em;
     top: 50px;
 }
@@ -588,5 +585,24 @@ input:checked + .lg-pricing__slider:before {
 @media (max-width: 768px) {
     .lg-pricing { padding: 100px 0 60px; }
     .lg-pricing__grid { grid-template-columns: 1fr; }
-    .lg-pricing__bg-text { font-size: 25vw; top: 4vh; }
+    .lg-pricing__bg-text { font-size: 30vw; top: 15vh; }
+    .lg-pricing-card--pro {
+        transform: translateY(-10px); /* Use translateY instead of scale to avoid overflow */
+    }
+    .lg-pricing-card--pro:hover {
+        transform: translateY(-20px);
+    }
+    .lg-pricing__toggle {
+        flex-direction: column;
+        gap: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .lg-pricing-card__price {
+        font-size: 3rem;
+    }
+    .lg-pricing-card__tier {
+        font-size: 1.3rem;
+    }
 }

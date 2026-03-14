@@ -12,7 +12,7 @@
 
 .lg-why-section {
     position: relative;
-    height: 400vh; 
+    height: 440vh; 
     background: #000000;
     font-family: 'Plus Jakarta Sans', sans-serif;
     color: #ffffff;
@@ -233,12 +233,35 @@
 
 /* Responsive adjustments for tablet and mobile */
 @media (max-width: 1024px) {
+    .lg-why-section {
+        height: auto; /* Disable scroll-driven animation height */
+    }
+    .lg-why-sticky {
+        position: relative;
+        height: auto;
+        padding: 100px 1rem;
+        display: block;
+    }
+    .lg-why-title {
+        position: relative;
+        transform: none;
+        left: auto; top: auto;
+        text-align: center;
+        font-size: 12vw;
+        margin-bottom: 4rem;
+    }
+    .lg-why-cards-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        width: 100%;
+        height: auto;
+        margin-top: 0;
+    }
     .lg-why-card { flex-direction: column; border-left: none; border-top: 2px solid var(--lg-neon); }
-    .lg-why-cards-wrapper { width: 90vw; height: auto; min-height: 80vh; } 
     .lg-why-card-content { flex: none; padding: 2.5rem; height: 100%; gap: 2rem; }
     .lg-card-body { padding-right: 0; }
     .lg-why-card-icon-wrapper { display: none; /* Hide heavy 3D icon on mobile for performance/readability */ }
-    .lg-why-title { font-size: 10vw; }
     .lg-why-card-title { font-size: 2.5rem; }
     .lg-why-card-desc { font-size: 1rem; }
     .lg-advantages li { font-size: 0.95rem; }
